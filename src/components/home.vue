@@ -1,29 +1,30 @@
 <template>
   <div class="home">
-    <top-bar></top-bar>
-    <side-bar></side-bar>
+<!--    <top-bar></top-bar>-->
+<!--    <side-bar></side-bar>-->
+
   </div>
 </template>
 
 <script>
-  import sideBar from "./common/sideBar";
-  import topBar from "./common/topBar";
+  // import sideBar from "./common/sideBar";
+  // import topBar from "./common/topBar";
 export default {
   name: 'Home',
   components: {
-    sideBar,
-    topBar,
+    // sideBar,
+    // topBar,
   },
   data: function () {
     return {}
   },
   methods: {
-    handleOpen(key, keyPath) {
-      console.log(key, keyPath);
-    },
-    handleClose(key, keyPath) {
-      console.log(key, keyPath);
-    }
+    // handleOpen(key, keyPath) {
+    //   console.log(key, keyPath);
+    // },
+    // handleClose(key, keyPath) {
+    //   console.log(key, keyPath);
+    // }
   }
 
 }
