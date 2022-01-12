@@ -42,31 +42,7 @@ export default new Router({
     {
       path: '/',
       component: () => import('@/components/home'),
-      name: 'home',
-    },
-    {
-      path: '/father',
-      component: () => import('@/components/componentCommunication/father'),
-      name: 'father',
-      meta: {
-        title: 'father'
-      }
-    },
-    {
-      path: '/son',
-      component: () => import('@/components/componentCommunication/son'),
-      name: 'son',
-      meta: {
-        title: 'son'
-      }
-    },
-    {
-      path: '/brother',
-      component: () => import('@/components/componentCommunication/brother'),
-      name: 'brother',
-      meta: {
-        title: 'brother'
-      }
-    },
+      name: 'home'
+    }
   ]
 })

@@ -1,13 +1,13 @@
 <template>
-  <div class="son">
-    son
+  <div class="top-bar">
+    topBar
   </div>
 </template>
 
 <script>
-    export default {
-        name: "son"
-    }
+  export default {
+    name: "topBar"
+  }
 </script>
 
 <style scoped>

@@ -1,18 +1,32 @@
 <template>
   <div class="home">
-    <h1>{{ msg }}</h1>
+    <top-bar></top-bar>
+    <side-bar></side-bar>
   </div>
 </template>
 
 <script>
-  export default {
-    name: 'Home',
-    data() {
-      return {
-        msg: "home",
-      }
+  import sideBar from "./common/sideBar";
+  import topBar from "./common/topBar";
+export default {
+  name: 'Home',
+  components: {
+    sideBar,
+    topBar,
+  },
+  data: function () {
+    return {}
+  },
+  methods: {
+    handleOpen(key, keyPath) {
+      console.log(key, keyPath);
+    },
+    handleClose(key, keyPath) {
+      console.log(key, keyPath);
     }
   }
+
+}
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
