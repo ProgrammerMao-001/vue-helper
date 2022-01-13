@@ -1,37 +1,41 @@
 <template>
   <div class="home">
-<!--    <top-bar></top-bar>-->
-<!--    <side-bar></side-bar>-->
-
+    <!--        <top-bar></top-bar>   -->
+    <!--        <side-bar></side-bar>   -->
+    <el-container class="layout-container">
+      <el-header>
+        <top-bar></top-bar>
+      </el-header>
+      <el-container>
+        <el-aside width="300px">
+          <side-bar></side-bar>
+        </el-aside>
+        <el-main>Main</el-main>
+      </el-container>
+    </el-container>
+    <div class="test">
+    </div>
   </div>
 </template>
 
 <script>
-  // import sideBar from "./common/sideBar";
-  // import topBar from "./common/topBar";
-export default {
-  name: 'Home',
-  components: {
+  import topBar from "./common/topBar";
+  import sideBar from "./common/sideBar";
+  export default {
+    name: 'Home',
+    components: {
+      topBar,
+      sideBar,
+    },
+    data: function () {
+      return {}
+    },
+    methods: {
+    }
 
-    // sideBar,
-    // topBar,
-  },
-  data: function () {
-    return {}
-  },
-  methods: {
-    // handleOpen(key, keyPath) {
-    //   console.log(key, keyPath);
-    // },
-    // handleClose(key, keyPath) {
-    //   console.log(key, keyPath);
-    // }
   }
-
-}
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 
 </style>

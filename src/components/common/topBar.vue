@@ -1,6 +1,6 @@
 <template>
   <div class="top-bar">
-    topBar
+    AAAAA
   </div>
 </template>
 
@@ -10,6 +10,8 @@
   }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
+.top-bar {
 
+}
 </style>
