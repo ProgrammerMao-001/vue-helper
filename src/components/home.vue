@@ -19,8 +19,11 @@
 </template>
 
 <script>
+  import requestServer from '@/utils/request'
   import topBar from "./common/topBar";
   import sideBar from "./common/sideBar";
+  import { sideBarList } from '@/api/menuList';
+
   export default {
     name: 'Home',
     components: {
@@ -31,6 +34,20 @@
       return {}
     },
     methods: {
+      // async test() {
+      //   const data = await requestServer.test();
+      //   console.log(data)
+      // }
+
+      getSideBarList() {
+        sideBarList().then((res) => {
+          console.log(res)
+        })
+      }
+    },
+
+    created() {
+      this.getSideBarList();
     }
 
   }
