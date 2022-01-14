@@ -14,8 +14,8 @@ module.exports = {
 
     // Various Dev Server settings
     // host: 'localhost', // can be overwritten by process.env.HOST
-    host: '192.168.2.106', // can be overwritten by process.env.HOST workPc
-    // host: '192.168.2.109', // can be overwritten by process.env.HOST selfPc
+    // host: '192.168.2.106', // can be overwritten by process.env.HOST workPc
+    host: '192.168.2.109', // can be overwritten by process.env.HOST selfPc
     port: 5200, // can be overwritten by process.env.PORT, if port is in use, a free one will be determined
     autoOpenBrowser: false,
     errorOverlay: true,
@@ -31,7 +31,7 @@ module.exports = {
     showEslintErrorsInOverlay: false,
 
     /**
-     * Source Maps
+     * Source MapssideBar
      */
 
     // https://webpack.js.org/configuration/devtool/#development

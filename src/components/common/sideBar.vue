@@ -1,80 +1,80 @@
 <template>
   <div class="side-bar">
-    <el-menu
-      default-active="2"
-      class="el-menu-vertical-demo"
-      @open="handleOpen"
-      @close="handleClose"
-      background-color="#545c64"
-      text-color="#fff"
-      active-text-color="#ffd04b">
-      <el-submenu index="1">
-        <template slot="title">
-          <i class="el-icon-location"></i>
-          <span>导航一</span>
-        </template>
-        <el-menu-item-group>
-          <el-menu-item index="1-1">选项1</el-menu-item>
-          <el-menu-item index="1-2">选项2</el-menu-item>
-          <el-menu-item index="1-3">选项3</el-menu-item>
-        </el-menu-item-group>
-        <el-submenu index="1-4">
-          <template slot="title">选项4</template>
-          <el-menu-item index="1-4-1">选项4-1</el-menu-item>
-        </el-submenu>
-      </el-submenu>
+    <el-container style="height: 500px; border: 1px solid #eee">
+      <el-aside width="200px" style="background-color: rgb(238, 241, 246)">
+        <!--左侧菜单组件-->
+        <el-menu
+          :default-active="isId"
+          @select="handleSelect"
+          class="el-menu-vertical-demo"
+          background-color="#F0F6F6"
+          text-color="#3C3F41"
+          active-text-color="#f60">
+          <NavMenu :navMenus="totalList"></NavMenu>
+        </el-menu>
+      </el-aside>
 
-      <el-menu-item index="2">
-        <i class="el-icon-menu"></i>
-        <span slot="title">导航二</span>
-      </el-menu-item>
-
-      <el-menu-item index="3">
-        <i class="el-icon-document"></i>
-        <span slot="title">导航三</span>
-      </el-menu-item>
-
-    </el-menu>
+      <el-container>
+        <el-main>
+          <router-view></router-view>
+        </el-main>
+      </el-container>
+    </el-container>
   </div>
 </template>
 
 <script>
-  import { sideBarList, sideBarListJianShu } from "../../api/menuList";
+  import {sideBarList, sideBarListJianShu} from "../../api/menuList";
+  import NavMenu from "../eleTemplate";
 
   export default {
-  name: 'sideBar',
-  data: function () {
-    return {}
-  },
-  methods: {
-    handleOpen (key, keyPath) {
-      console.log(key, keyPath)
-    },
-    handleClose (key, keyPath) {
-      console.log(key, keyPath)
+    name: 'sideBar',
+
+    components: {
+      NavMenu
     },
 
-    // getSideBarList() {
-    //   sideBarList().then((res) => {
-    //     console.log(res)
-    //   })
-    // },
+    data() {
+      return {
+        totalList: [],
+        isId: "权限管理"
+      }
+    },
 
-    getSideBarListJianShu() {
-      sideBarListJianShu().then((res) => {
-        if (res.data.code === 200) {
-          console.log(res)
-        } else {
-          this.$message.warning('获取侧边栏数据失败，请重试！')
-        }
+    methods: {
+      handleSelect(key, keyPath) {
+        console.log(key, keyPath)
+      },
+      getSideBarListJianShu() {
+        sideBarListJianShu().then((res) => {
+          if (res.data.code === 200) {
+            console.log(res);
+            this.totalList = res.data.childs;
+          } else {
+            this.$message.warning('获取侧边栏数据失败，请重试！')
+          }
+        })
+      },
+    },
+
+    beforeRouteEnter(to, from, next) {
+      console.log("我从哪里来", to.params.id, from)
+      var self = this
+      next(vm => {
+        vm.isId = to.params.id
       })
     },
-  },
-  created() {
-    // this.getSideBarList();
-    this.getSideBarListJianShu();
+
+    watch: {
+      $route(to, from) {
+        this.isId = to.params.id
+      }
+    },
+
+    created() {
+      this.getSideBarListJianShu();
+    },
   }
-}
 </script>
 
 <style lang="scss" scoped>
