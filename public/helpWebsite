@@ -1,6 +1,8 @@
-vhttps://www.jianshu.com/p/5c37017c9224  // Vue 组件库Element布局容器动态生成侧边栏。
+// Vue 组件库Element布局容器动态生成侧边栏
+https://www.jianshu.com/p/5c37017c9224
 
+// 安装node-sass与sass-loader
+cnpm install sass-loader@7.3.1 --save-dev
 cnpm install node-sass@4.14.1 --save-dev
-cnpm install sass-loader@7.3.1 --save-dev  // 安装node-sass与sass-loader
 
 

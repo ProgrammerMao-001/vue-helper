@@ -39,21 +39,42 @@
 </template>
 
 <script>
+  import { sideBarList, sideBarListJianShu } from "../../api/menuList";
+
   export default {
-    name: 'sideBar',
-    data: function () {
-      return {
-      }
+  name: 'sideBar',
+  data: function () {
+    return {}
+  },
+  methods: {
+    handleOpen (key, keyPath) {
+      console.log(key, keyPath)
     },
-    methods: {
-      handleOpen(key, keyPath) {
-        console.log(key, keyPath);
-      },
-      handleClose(key, keyPath) {
-        console.log(key, keyPath);
-      }
-    }
+    handleClose (key, keyPath) {
+      console.log(key, keyPath)
+    },
+
+    // getSideBarList() {
+    //   sideBarList().then((res) => {
+    //     console.log(res)
+    //   })
+    // },
+
+    getSideBarListJianShu() {
+      sideBarListJianShu().then((res) => {
+        if (res.data.code === 200) {
+          console.log(res)
+        } else {
+          this.$message.warning('获取侧边栏数据失败，请重试！')
+        }
+      })
+    },
+  },
+  created() {
+    // this.getSideBarList();
+    this.getSideBarListJianShu();
   }
+}
 </script>
 
 <style lang="scss" scoped>
