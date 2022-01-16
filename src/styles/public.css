@@ -17,8 +17,12 @@
   padding: 0;
 }
 
+.el-container {
+  height: 100%;
+}
+
 .el-header {
-  background-color: #B3C0D1;
+  background-color: #ffffff;
   color: #333;
   text-align: left;
   line-height: 60px;
@@ -26,14 +30,27 @@
 
 .el-aside {
   overflow: hidden;
-  background: #545c64;
+  background: #2a5eff;
 }
 
 .el-main {
-  background-color: #E9EEF3;
+  background-color: #f2f3f7;
   color: #333;
 }
 
 .layout-container {
   height: 100%;
+}
+
+.el-icon-arrow-down:before {
+  color: #fff!important;
+}
+
+.el-submenu :hover {
+  background-color: #2350e7!important;
+}
+
+.el-submenu .is-active {
+  color: #dee1e6!important;
+  background-color: #2350e7!important;
 }
