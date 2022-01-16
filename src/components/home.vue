@@ -1,16 +1,5 @@
 <template>
   <div class="home">
-    <!--    <el-container class="layout-container">-->
-    <!--      <el-header>-->
-    <!--        <top-bar></top-bar>-->
-    <!--      </el-header>-->
-    <!--      <el-container>-->
-    <!--        <el-aside width="300px">-->
-    <!--          <side-bar></side-bar>-->
-    <!--        </el-aside>-->
-    <!--        <el-main>Main</el-main>-->
-    <!--      </el-container>-->
-    <!--    </el-container>-->
     <el-container>
       <el-aside width="300px" height="100%">
         <div class="aside-header">
