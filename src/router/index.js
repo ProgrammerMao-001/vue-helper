@@ -20,11 +20,15 @@ export default new Router({
           meta: {
             title: 'study-code',
           },
-          // component: () => import(/* webpackChunkName: "dashboard" */ '@/views/dataView/houseDataView/houseDataView.vue'),
           component: () => import(/* webpackChunkName: "dashboard" */ '@/views/index.vue'),
-          // component: () => import(/* webpackChunkName: "dashboard" */ '@/views/demo/demo.vue'),
         },
       ],
+    },
+
+    {
+      path: '/demo',
+      name: 'Demo',
+      component: () => import(/* webpackChunkName: "dashboard" */ '@/views/demo/demo.vue'),
     },
   ]
 })

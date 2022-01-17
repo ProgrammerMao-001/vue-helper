@@ -5,7 +5,7 @@ const server = axios.create({
   timeout: 5000,
 })
 // const baseUrl = "https://www.fastmock.site/mock/c25e396c1d2ef07e8f1fc0acf0adc1a5/vue-helper"
-// axios.defaults.headers['Content-Type'] = 'application/json;charset=utf-8'
+axios.defaults.headers['Content-Type'] = 'application/json;charset=utf-8'
 // 请求前
 server.interceptors.request.use((config) => config);
 // 请求前错误

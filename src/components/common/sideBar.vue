@@ -4,13 +4,15 @@
       <el-aside style="background-color: rgb(238, 241, 246)">
         <!--左侧菜单组件-->
         <el-menu
+          :style="{width: `${isCollapse?'53px':'300px'}`}"  :collapse="isCollapse"
           :default-active="isId"
+          collapse-transition="true"
           @select="handleSelect"
           class="el-menu-vertical"
           background-color="#2a5eff"
           text-color="#f5f6f8"
           active-text-color="#fff">
-          <NavMenu :navMenus="totalList"></NavMenu>
+          <ele-template :navMenus="totalList"></ele-template>
         </el-menu>
       </el-aside>
 
@@ -25,17 +27,26 @@
 
 <script>
 import {sideBarList, sideBarListJianShu} from '../../api/menuList';
-import NavMenu from "../eleTemplate";
+import EleTemplate from "../eleTemplate";
 
 export default {
   name: 'sideBar',
+  props: {
+    rowId: {
+      type: Boolean,
+      default() {
+        return false;
+      },
+    },
+  },
 
   components: {
-    NavMenu
+    EleTemplate
   },
 
   data() {
     return {
+      isCollapse: false,
       totalList: [],
       isId: "权限管理"
     }
@@ -48,7 +59,7 @@ export default {
     getSideBarListJianShu() {
       sideBarListJianShu().then((res) => {
         if (res.data.code === 200) {
-          console.log(res);
+          // console.log(res);
           this.totalList = res.data.childs;
         } else {
           this.$message.warning('获取侧边栏数据失败，请重试！')
@@ -68,12 +79,16 @@ export default {
   watch: {
     $route(to, from) {
       this.isId = to.params.id
+    },
+    rowId: function (newValue) {
+      this.isCollapse = newValue;
     }
-
   },
 
   created() {
+    // console.log(this.rowId, 86);
     this.getSideBarListJianShu();
+    this.$emit('on-response', this.isCollapse);
   },
 }
 </script>
