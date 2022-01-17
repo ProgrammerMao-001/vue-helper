@@ -30,6 +30,7 @@
 <script>
   import topBar from "./common/topBar";
   import sideBar from "./common/sideBar";
+  import router from '@/router/index';
 
   export default {
     name: 'Home',

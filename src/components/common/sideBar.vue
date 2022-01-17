@@ -3,10 +3,12 @@
     <el-container>
       <el-aside style="background-color: rgb(238, 241, 246)">
         <!--左侧菜单组件-->
+
+        <!--:default-active="isId"-->
         <el-menu
+          :default-active="$route.path"
           :style="{width: `${isCollapse?'53px':'300px'}`}"  :collapse="isCollapse"
-          :default-active="isId"
-          collapse-transition="true"
+          :collapse-transition=true
           @select="handleSelect"
           class="el-menu-vertical"
           background-color="#2a5eff"
@@ -28,6 +30,7 @@
 <script>
 import {sideBarList, sideBarListJianShu} from '../../api/menuList';
 import EleTemplate from "../eleTemplate";
+import router from '@/router/index';
 
 export default {
   name: 'sideBar',
