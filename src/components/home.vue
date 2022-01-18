@@ -42,7 +42,9 @@
     },
 
     computed: {
-
+      username() {
+        return this.$route.params.username
+      }
     },
 
     filters: {

@@ -97,7 +97,8 @@ export default new Router({
             title: '账号管理',
           },
           // component: Home,
-          component: () => import(/* webpackChunkName: "email" */ '@/views/user/content/email/email.vue'),
+          // component: () => import(/* webpackChunkName: "email" */ '@/views/user/content/email/email.vue'),
+          component: () => import(/* webpackChunkName: "index" */ '@/views/user/content/index.vue'),
           children: [
             {
               path: '/user/content/email',
