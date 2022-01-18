@@ -7,6 +7,7 @@
         <!--:default-active="isId"-->
         <el-menu
           :default-active="$route.path"
+          style="transition: all 0.2s;"
           :style="{width: `${isCollapse?'53px':'300px'}`}"  :collapse="isCollapse"
           :collapse-transition=true
           @select="handleSelect"

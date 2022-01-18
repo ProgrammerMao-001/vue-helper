@@ -2,7 +2,7 @@
   <div class="home">
     <el-container>
       <el-aside
-        style="animation-fill-mode: forwards;height: 100%;transition: all 0.2s;"
+        style="animation-fill-mode: forwards;height: 100%;transition: all 0.4s;"
         :style="{width: `${isCollapse2?'53px':'300px'}`}" height="100%">
 <!--      <el-aside :width="isCollapse2 ? '60px' : '300px'" height="100%">-->
         <div class="aside-header">
