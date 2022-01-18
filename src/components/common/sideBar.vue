@@ -11,6 +11,7 @@
           :style="{width: `${isCollapse?'53px':'300px'}`}"  :collapse="isCollapse"
           :collapse-transition=true
           @select="handleSelect"
+          @open="handleMenuOpen"
           class="el-menu-vertical"
           background-color="#2a5eff"
           text-color="#f5f6f8"
@@ -58,6 +59,11 @@ export default {
 
   methods: {
     handleSelect(key, keyPath) {
+      console.log('handleSelect')
+      console.log(key, keyPath)
+    },
+    handleMenuOpen(key, keyPath) {
+      console.log('handleMenuOpen')
       console.log(key, keyPath)
     },
     getSideBarListJianShu() {
@@ -74,6 +80,7 @@ export default {
 
   beforeRouteEnter(to, from, next) {
     console.log("我从哪里来", to.params.id, from)
+    console.log(to, from, next);
     var self = this
     next(vm => {
       vm.isId = to.params.id
@@ -90,7 +97,8 @@ export default {
   },
 
   created() {
-    // console.log(this.rowId, 86);
+    // console.log(this.$route.path, 93)
+    // console.log(this.$router.options, 94)
     this.getSideBarListJianShu();
     this.$emit('on-response', this.isCollapse);
   },

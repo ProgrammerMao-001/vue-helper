@@ -40,7 +40,7 @@ export default new Router({
       redirect: '/system',
       name: 'auth',
       meta: {
-        title: '权限管理',
+        title: '系统管理',
       },
       component: Home,
       children: [
@@ -81,17 +81,17 @@ export default new Router({
 
     // ********************************** 用户管理 **********************************
     {
-      path: '/user',
-      redirect: '/user/content',
+      path: '/user/content/email',
+      // redirect: '/user/content',
       name: 'User',
       meta: {
-        title: '邮箱管理',
+        title: '用户管理',
       },
       component: Home,
       children: [
         {
-          path: '/user/content',
-          redirect: '/user/content/email',
+          path: '/user/content/email',
+          // redirect: '/user/content/email',
           name: 'Content',
           meta: {
             title: '账号管理',
@@ -164,6 +164,5 @@ export default new Router({
         },
       ],
     },
-
   ]
 })
