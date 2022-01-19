@@ -42,9 +42,9 @@
     },
 
     computed: {
-      username() {
-        return this.$route.params.username
-      }
+      // username() {
+      //   return this.$route.params.username
+      // }
     },
 
     filters: {
@@ -57,11 +57,6 @@
       }
     },
     methods: {
-      // async test() {
-      //   const data = await requestServer.test();
-      //   console.log(data)
-      // }
-
       receiveData(data) {
         this.isCollapse2 = data;
       },

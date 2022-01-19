@@ -38,7 +38,7 @@ export default new Router({
     {
       path: '/system',
       redirect: '/system',
-      name: 'auth',
+      name: 'System',
       meta: {
         title: '系统管理',
       },
@@ -162,6 +162,53 @@ export default new Router({
             title: '评论管理',
           },
           component: () => import(/* webpackChunkName: "comment" */ '@/views/content/comment/comment.vue'),
+        },
+      ],
+    },
+
+    // ********************************** 预警管理 **********************************
+    {
+      path: '/earlyWarning/monitor',
+      // redirect: '/user/content',
+      name: 'EarlyWarning',
+      meta: {
+        title: '预警管理',
+      },
+      component: Home,
+      children: [
+        {
+          path: '/earlyWarning/monitor',
+          name: 'Monitor',
+          meta: {
+            title: '监控管理',
+          },
+          component: () => import(/* webpackChunkName: "index" */ '@/views/earlyWarning/monitor/monitor.vue'),
+        },
+        {
+          path: '/earlyWarning/order/commodity',
+          name: 'Order',
+          meta: {
+            title: '订单管理',
+          },
+          component: () => import(/* webpackChunkName: "integral" */ '@/views/earlyWarning/order/index.vue'),
+          children: [
+            {
+              path: '/earlyWarning/order/commodity',
+              name: 'Commodity',
+              meta: {
+                title: '商品管理',
+              },
+              component: () => import(/* webpackChunkName: "email" */ '@/views/earlyWarning/order/commodity/commodity.vue'),
+            },
+            {
+              path: '/earlyWarning/order/people',
+              name: 'People',
+              meta: {
+                title: '人物管理',
+              },
+              component: () => import(/* webpackChunkName: "pass" */ '@/views/earlyWarning/order/people/people.vue'),
+            },
+          ]
         },
       ],
     },

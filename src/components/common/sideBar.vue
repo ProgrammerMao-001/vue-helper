@@ -1,125 +1,124 @@
 <template>
-    <div class="side-bar">
-        <el-container>
-            <el-aside style="background-color: rgb(238, 241, 246)">
-                <!--左侧菜单组件-->
+  <div class="side-bar">
+    <el-container>
+      <el-aside style="background-color: rgb(238, 241, 246)">
+        <!--左侧菜单组件-->
+        <!--:default-active="isId"-->
+        <!-- :default-active="$route.path"-->
 
-                <!--:default-active="isId"-->
-                <!-- :default-active="$route.path"-->
+        <!-- todo
+            参考：https://www.cnblogs.com/sexintercourse/p/12359480.html
+            router  // 启用 router 属性
+            :default-active = "path"  // 当前激活的菜单绑定"path"
+        -->
+        <el-menu
+          router
+          :default-active="path"
+          :unique-opened=true
+          style="transition: all 0.2s;"
+          :style="{width: `${isCollapse?'53px':'300px'}`}" :collapse="isCollapse"
+          :collapse-transition=true
+          @select="handleSelect"
+          @open="handleMenuOpen"
+          class="el-menu-vertical"
+          background-color="#2a5eff"
+          text-color="#f5f6f8"
+          active-text-color="#fff">
+          <ele-template :navMenus="totalList"></ele-template>
+        </el-menu>
+      </el-aside>
 
-                    <!-- todo
-                        参考：https://www.cnblogs.com/sexintercourse/p/12359480.html
-                        router  // 启用 router 属性
-                        :default-active = "path"  // 当前激活的菜单绑定"path"
-                    -->
-                <el-menu
-                        router
-                        :default-active="path"
-                        style="transition: all 0.2s;"
-                        :style="{width: `${isCollapse?'53px':'300px'}`}" :collapse="isCollapse"
-                        :collapse-transition=true
-                        @select="handleSelect"
-                        @open="handleMenuOpen"
-                        class="el-menu-vertical"
-                        background-color="#2a5eff"
-                        text-color="#f5f6f8"
-                        active-text-color="#fff">
-                    <ele-template :navMenus="totalList"></ele-template>
-                </el-menu>
-            </el-aside>
-
-            <el-container>
-                <el-main>
-                    <router-view></router-view>
-                </el-main>
-            </el-container>
-        </el-container>
-    </div>
+      <el-container>
+        <el-main>
+          <router-view></router-view>
+        </el-main>
+      </el-container>
+    </el-container>
+  </div>
 </template>
 
 <script>
-    import {sideBarList, sideBarListJianShu} from '../../api/menuList';
-    import EleTemplate from "../eleTemplate";
-    import router from '@/router/index';
+  import {sideBarList, sideBarListJianShu} from '../../api/menuList';
+  import EleTemplate from "../eleTemplate";
+  import router from '@/router/index';
 
-    export default {
-        name: 'sideBar',
-        props: {
-            rowId: {
-                type: Boolean,
-                default() {
-                    return false;
-                },
-            },
+  export default {
+    name: 'sideBar',
+    props: {
+      rowId: {
+        type: Boolean,
+        default() {
+          return false;
         },
+      },
+    },
 
-        components: {
-            EleTemplate
-        },
+    components: {
+      EleTemplate
+    },
 
-        data() {
-            return {
-                path: '',
-                isCollapse: false,
-                totalList: [],
-                // isId: "权限管理"
-            }
-        },
+    data() {
+      return {
+        path: '',
+        isCollapse: false,
+        totalList: [],
+        // isId: "权限管理"
+      }
+    },
 
-        methods: {
-            handleSelect(key, keyPath) {
-                console.log('handleSelect')
-                console.log(key, keyPath)
-            },
-            handleMenuOpen(key, keyPath) {
-                console.log('handleMenuOpen')
-                console.log(key, keyPath)
-            },
+    methods: {
+      handleSelect(key, keyPath) {
+        console.log(key, keyPath)
+        console.log('this.$route.path', this.$route.path);
+      },
+      handleMenuOpen(key, keyPath) {
+        console.log(key, keyPath)
+      },
 
-            // todo 渲染侧边栏数据
-            getSideBarListJianShu() {
-                sideBarListJianShu().then((res) => {
-                    if (res.data.code === 200) {
-                        // console.log(res);
-                        this.totalList = res.data.childs;
-                    } else {
-                        this.$message.warning('获取侧边栏数据失败，请重试！')
-                    }
-                })
+      // todo 渲染侧边栏数据
+      getSideBarListJianShu() {
+        sideBarListJianShu().then((res) => {
+          if (res.data.code === 200) {
+            console.log(res.data, 84);
+            this.totalList = res.data.childs;
+          } else {
+            this.$message.warning('获取侧边栏数据失败，请重试！')
+          }
+        })
+        console.log('this.$route.path', this.$route.path);
+        console.log('this.$router', this.$router);
+      },
+    },
 
-                console.log(this.$route.path); // 111
-            },
-        },
+    beforeRouteEnter(to, from, next) {
+      // console.log("我从哪里来", to.params.id, from)
+      // console.log(to, from, next);
+      // var self = this
+      // next(vm => {
+      //     vm.isId = to.params.id
+      // })
+    },
 
-        beforeRouteEnter(to, from, next) {
-            // console.log("我从哪里来", to.params.id, from)
-            // console.log(to, from, next);
-            // var self = this
-            // next(vm => {
-            //     vm.isId = to.params.id
-            // })
-        },
+    watch: {
+      $route(to, from) {
+        // this.isId = to.params.id
+      },
+      rowId: function (newValue) {
+        this.isCollapse = newValue;
+      }
+    },
 
-        watch: {
-            $route(to, from) {
-                // this.isId = to.params.id
-            },
-            rowId: function (newValue) {
-                this.isCollapse = newValue;
-            }
-        },
-
-        created() {
-            // console.log(this.$route.path, 93)
-            // console.log(this.$router.options, 94)
-            this.getSideBarListJianShu();
-            this.$emit('on-response', this.isCollapse);
-        },
-    }
+    created() {
+      // console.log(this.$route.path, 93)
+      // console.log(this.$router.options, 94)
+      this.getSideBarListJianShu();
+      this.$emit('on-response', this.isCollapse);
+    },
+  }
 </script>
 
 <style lang="scss" scoped>
-    .el-menu-vertical {
-        width: 100%;
-    }
+  .el-menu-vertical {
+    width: 100%;
+  }
 </style>
