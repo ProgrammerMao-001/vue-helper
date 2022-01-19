@@ -4,7 +4,7 @@
       <el-aside
         style="animation-fill-mode: forwards;height: 100%;transition: all 0.4s;"
         :style="{width: `${isCollapse2?'53px':'300px'}`}" height="100%">
-<!--      <el-aside :width="isCollapse2 ? '60px' : '300px'" height="100%">-->
+        <!--      <el-aside :width="isCollapse2 ? '60px' : '300px'" height="100%">-->
         <div class="aside-header">
           <i :style="{ display: isCollapse2?'none':'' }" class="el-icon-s-platform"></i>
           <span :style="{ display: isCollapse2?'none':'' }"> xxx system </span>
@@ -18,8 +18,20 @@
         </el-header>
         <el-main>
           <keep-alive>
-            <router-view></router-view>
+            <div class="content">
+              <router-view></router-view>
+            </div>
           </keep-alive>
+          <!-- 面包屑 start -->
+          <div class="bottom-bread">
+            <el-breadcrumb separator-class="el-icon-arrow-right">
+              <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
+              <el-breadcrumb-item>活动管理</el-breadcrumb-item>
+              <el-breadcrumb-item>活动列表</el-breadcrumb-item>
+              <el-breadcrumb-item>活动详情</el-breadcrumb-item>
+            </el-breadcrumb>
+          </div>
+          <!-- 面包屑 end -->
         </el-main>
       </el-container>
     </el-container>
@@ -47,9 +59,7 @@
       // }
     },
 
-    filters: {
-
-    },
+    filters: {},
 
     data: function () {
       return {
@@ -70,7 +80,7 @@
       },
     },
 
-   async created() {
+    async created() {
       await this.receiveData();
       // console.log(this.isCollapse2, 55);
     }

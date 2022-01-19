@@ -20,3 +20,12 @@ export function sideBarListJianShu () {
     method: 'get'
   })
 }
+
+// 顶部栏的搜索数据
+export function topBarSearch () {
+  return request({
+    url: baseUrl + '/top-bar-search',
+    method: 'get'
+  })
+}
+

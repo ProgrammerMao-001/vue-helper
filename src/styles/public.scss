@@ -1,0 +1,102 @@
+
+#app {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.clearfix :after {
+  visibility: hidden;
+  display: block;
+  font-size: 0;
+  content: " ";
+  clear: both;
+  height: 0;
+}
+
+.home, html, body, #app {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.home .content {
+  background-color: #fff;
+  height: calc(100% - 24px);
+}
+
+.el-container, .layout-container {
+  height: 100%;
+}
+
+/*
+* todo It's top-bar's style
+*/
+
+.el-header {
+  overflow: hidden;
+  background-color: #ffffff;
+  color: #333;
+  text-align: left;
+  line-height: 60px;
+}
+
+.el-aside {
+  overflow: hidden;
+  background: #2a5eff;
+}
+
+.el-main {
+  background-color: #f2f3f7;
+  color: #333;
+}
+
+/*.el-icon-arrow-down:before, .el-icon-arrow-right:before {*/
+/*  color: #fff!important;*/
+/*}*/
+
+.el-submenu :hover {
+  background-color: #2350e7 !important;
+}
+
+.el-submenu .is-active {
+  color: #dee1e6 !important;
+  background-color: #2350e7 !important;
+}
+
+.hidden-span {
+  color: #2a5eff;
+}
+
+/*
+* todo It's el-dropdown's style
+*/
+.el-dropdown-link {
+  cursor: pointer;
+  color: #409EFF;
+}
+
+.el-icon-arrow-down {
+  font-size: 12px;
+}
+
+/*
+* todo It's side bar's style
+*/
+.el-aside .el-icon-arrow-down, .el-icon-arrow-right {
+  color: white !important;
+}
+
+/*
+* todo 面包屑的样式
+*/
+.bottom-bread {
+  margin-top: 10px;
+  width: 100%;
+  height: 14px;
+
+  .el-icon-arrow-right{
+    color: #333!important;
+  }
+
+}
+

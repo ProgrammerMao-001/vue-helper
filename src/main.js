@@ -7,7 +7,7 @@ import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
 import VueWeChatTitle from 'vue-wechat-title';
 import store from './store';
-import '@/styles/public.css'; // todo make global.css
+import '@/styles/public.scss'; // todo make global.css
 Vue.use(VueWeChatTitle);
 Vue.use(ElementUI);
 Vue.config.productionTip = false

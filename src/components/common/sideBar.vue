@@ -1,11 +1,8 @@
+<!-- // todo 这个是侧边栏 -->
 <template>
   <div class="side-bar">
     <el-container>
       <el-aside style="background-color: rgb(238, 241, 246)">
-        <!--左侧菜单组件-->
-        <!--:default-active="isId"-->
-        <!-- :default-active="$route.path"-->
-
         <!-- todo
             参考：https://www.cnblogs.com/sexintercourse/p/12359480.html
             router  // 启用 router 属性
@@ -62,7 +59,6 @@
         path: '',
         isCollapse: false,
         totalList: [],
-        // isId: "权限管理"
       }
     },
 
@@ -79,29 +75,22 @@
       getSideBarListJianShu() {
         sideBarListJianShu().then((res) => {
           if (res.data.code === 200) {
-            console.log(res.data, 84);
+            // console.log(res.data, 84);
             this.totalList = res.data.childs;
           } else {
             this.$message.warning('获取侧边栏数据失败，请重试！')
           }
         })
-        console.log('this.$route.path', this.$route.path);
-        console.log('this.$router', this.$router);
+        // console.log('this.$route.path', this.$route.path);
+        // console.log('this.$router', this.$router);
       },
     },
 
     beforeRouteEnter(to, from, next) {
-      // console.log("我从哪里来", to.params.id, from)
-      // console.log(to, from, next);
-      // var self = this
-      // next(vm => {
-      //     vm.isId = to.params.id
-      // })
     },
 
     watch: {
       $route(to, from) {
-        // this.isId = to.params.id
       },
       rowId: function (newValue) {
         this.isCollapse = newValue;
@@ -109,8 +98,6 @@
     },
 
     created() {
-      // console.log(this.$route.path, 93)
-      // console.log(this.$router.options, 94)
       this.getSideBarListJianShu();
       this.$emit('on-response', this.isCollapse);
     },
