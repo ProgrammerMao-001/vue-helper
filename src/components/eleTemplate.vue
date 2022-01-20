@@ -11,16 +11,17 @@
 <!--          <span slot="title">{{navMenu.entity.alias}}</span>-->
 <!--        </el-menu-item>-->
 <!--      </router-link>-->
+      <!-- todo 注：:index="navMenu.entity.path" 为  :default-active="pathRoute" 获取对应的路由    -->
 
       <el-menu-item v-if="navMenu.childs==null&&navMenu.entity&&navMenu.entity.state==='ENABLE'"
-                    :key="navMenu.entity.id" :data="navMenu" :index="navMenu.entity.name"
+                    :key="navMenu.entity.id" :data="navMenu" :index="navMenu.entity.path"
                     :route="navMenu.entity.path">
         <i style="color: #f5f6f8" :class="navMenu.entity.icon"></i>
         <span slot="title">{{navMenu.entity.alias}}</span>
       </el-menu-item>
 
       <el-submenu v-if="navMenu.childs&&navMenu.entity&&navMenu.entity.state==='ENABLE'"
-                  :key="navMenu.entity.id" :data="navMenu" :index="navMenu.entity.name">
+                  :key="navMenu.entity.id" :data="navMenu" :index="navMenu.entity.path">
         <template slot="title">
           <i style="color: #f5f6f8" :class="navMenu.entity.icon"></i>
           <span> {{navMenu.entity.alias}}</span>

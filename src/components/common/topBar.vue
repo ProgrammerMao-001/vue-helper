@@ -15,8 +15,8 @@
     </div>
 
     <div class="top-bar-right">
-      <i class="el-icon-message font-style"></i>
       <i class="el-icon-setting font-style"></i>
+      <i class="el-icon-message font-style"></i>
       <el-dropdown @command="handleCommand">
         <span class="el-dropdown-link">
           <span style="color: #333"> {{ userName }} </span>
@@ -103,10 +103,13 @@
 
       .font-style {
         font-size: 18px !important;
-      }
-
-      .el-icon-setting {
-        padding: 0 60px 0 12px;
+        cursor: pointer;
+        &:hover {
+          color: #2a5eff !important;
+        }
+        &:nth-child(2) {
+          padding: 0 60px 0 12px;
+        }
       }
 
       .el-dropdown {

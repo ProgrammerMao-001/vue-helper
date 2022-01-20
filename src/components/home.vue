@@ -3,11 +3,11 @@
     <el-container>
       <el-aside
         style="animation-fill-mode: forwards;height: 100%;transition: all 0.4s;"
-        :style="{width: `${isCollapse2?'53px':'300px'}`}" height="100%">
+        :style="{width: `${isCollapse2?'53px':'260px'}`}" height="100%">
         <!--      <el-aside :width="isCollapse2 ? '60px' : '300px'" height="100%">-->
         <div class="aside-header">
           <i :style="{ display: isCollapse2?'none':'' }" class="el-icon-s-platform"></i>
-          <span :style="{ display: isCollapse2?'none':'' }"> xxx system </span>
+          <span :style="{ display: isCollapse2?'none':'' }" style="padding: 0 4px 0 6px;"> xxx system </span>
           <i :style="{ lineHeight: isCollapse2?'60px':'' }" class="el-icon-s-fold" @click="changeIsCollapse"></i>
         </div>
         <side-bar :rowId="isCollapse2" @on-response="receiveData"></side-bar>
@@ -103,7 +103,7 @@
         // });
         this.breadcrumbList = this.$route.matched;
         // console.log(this.breadcrumbList)
-        console.log(this.$route.matched);
+        // console.log(this.$route.matched);
       }
     },
 
@@ -130,7 +130,7 @@
     }
 
     span {
-      padding: 0 28px 0 23px;
+      /*padding: 0 28px 0 23px;*/
       font-size: 28px;
       color: #fff;
       line-height: 60px;

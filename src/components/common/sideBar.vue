@@ -7,13 +7,14 @@
             参考：https://www.cnblogs.com/sexintercourse/p/12359480.html
             router  // 启用 router 属性
             :default-active = "path"  // 当前激活的菜单绑定"path"
+            :default-active="$route.path"
         -->
         <el-menu
           router
-          :default-active="path"
+          :default-active="pathRoute"
           :unique-opened=true
           style="transition: all 0.2s;"
-          :style="{width: `${isCollapse?'53px':'300px'}`}" :collapse="isCollapse"
+          :style="{width: `${isCollapse?'53px':'260px'}`}" :collapse="isCollapse"
           :collapse-transition=true
           @select="handleSelect"
           @open="handleMenuOpen"
@@ -59,6 +60,7 @@
         path: '',
         isCollapse: false,
         totalList: [],
+        pathRoute: '/system/auth'
       }
     },
 
@@ -100,6 +102,7 @@
     created() {
       this.getSideBarListJianShu();
       this.$emit('on-response', this.isCollapse);
+      this.pathRoute = this.$route.path;
     },
   }
 </script>
