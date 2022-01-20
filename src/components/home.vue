@@ -24,11 +24,18 @@
           </keep-alive>
           <!-- 面包屑 start -->
           <div class="bottom-bread">
+            <!--            <el-breadcrumb separator-class="el-icon-arrow-right">-->
+            <!--              <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>-->
+            <!--              <el-breadcrumb-item>活动详情</el-breadcrumb-item>-->
+            <!--            </el-breadcrumb>-->
+
             <el-breadcrumb separator-class="el-icon-arrow-right">
-              <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
-              <el-breadcrumb-item>活动管理</el-breadcrumb-item>
-              <el-breadcrumb-item>活动列表</el-breadcrumb-item>
-              <el-breadcrumb-item>活动详情</el-breadcrumb-item>
+              <el-breadcrumb-item :to="{ path: '/' }">
+                <i class="el-icon-s-home" style="margin-right: 5px;"></i>首页
+              </el-breadcrumb-item>
+              <el-breadcrumb-item v-show="item.meta.title !== ''" v-for="item in breadcrumbList" :key="item.name" :to="{ path: item.path }">
+                {{item.meta.title}}
+              </el-breadcrumb-item>
             </el-breadcrumb>
           </div>
           <!-- 面包屑 end -->
@@ -59,13 +66,21 @@
       // }
     },
 
+    watch: {
+      $route() {
+        this.getBreadcrumb();
+      }
+    },
+
     filters: {},
 
     data: function () {
       return {
         isCollapse2: '',
+        breadcrumbList: [], // 展示面包屑的数组
       }
     },
+
     methods: {
       receiveData(data) {
         this.isCollapse2 = data;
@@ -78,11 +93,24 @@
         this.isCollapse2 = !this.isCollapse2;
         // console.log('isCollapse2', this.isCollapse2);
       },
+
+      getBreadcrumb() {
+        // this.$route.matched.filter((item,index,self) => {
+        //   if(item.meta.title){
+        //       const title = item.meta.title;
+        //       this.breadcrumbList.push(title);
+        //   }
+        // });
+        this.breadcrumbList = this.$route.matched;
+        // console.log(this.breadcrumbList)
+        console.log(this.$route.matched);
+      }
     },
 
     async created() {
       await this.receiveData();
-      // console.log(this.isCollapse2, 55);
+      this.breadcrumbList = this.$route.matched;
+      // console.log(this.breadcrumbList)
     }
 
   }

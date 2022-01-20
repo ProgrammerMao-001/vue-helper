@@ -64,11 +64,11 @@
 
     methods: {
       handleSelect(key, keyPath) {
-        console.log(key, keyPath)
-        console.log('this.$route.path', this.$route.path);
+        // console.log(key, keyPath)
+        // console.log('this.$route.path', this.$route.path);
       },
       handleMenuOpen(key, keyPath) {
-        console.log(key, keyPath)
+        // console.log(key, keyPath)
       },
 
       // todo 渲染侧边栏数据
