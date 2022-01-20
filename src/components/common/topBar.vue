@@ -3,6 +3,7 @@
   <div class="top-bar">
     <div class="top-bar-left">
       <el-autocomplete
+        size="small"
         v-model="state"
         :fetch-suggestions="querySearchAsync"
         placeholder="输入关键字查询"
@@ -108,7 +109,7 @@
           color: #2a5eff !important;
         }
         &:nth-child(2) {
-          padding: 0 60px 0 12px;
+          padding: 0 60px 0 14px;
         }
       }
 

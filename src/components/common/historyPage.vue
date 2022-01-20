@@ -4,11 +4,13 @@
     <router-link class="tags-view-item"
                  :class="isActive(tag) ? 'active' : '' "
                  v-for="(tag, index) in visitedTabsView"
-                 :to="tag.path" :key="index">
+                 :to="tag.path" :key="index"
+    >
       <el-tag
         closable
         :disable-transitions="false"
-        @close.prevent.stop="handleClose(tag)">
+        @close.prevent.stop="handleClose(tag)"
+        effect="plain">
         {{tag.name}}
       </el-tag>
     </router-link>
@@ -17,6 +19,7 @@
 
 <script>
   import {mapActions, mapGetters} from 'vuex';
+
   export default {
     name: "historyPage",
     data() {
@@ -77,7 +80,9 @@
 
 <style lang="scss" scoped>
   .tabs-view-container {
-    height: 40px;
+    /*height: 40px;*/
+    overflow-x: auto;
+    white-space: nowrap;
     padding: 5px;
     border-bottom: 1px solid #dfdfdf;
 
@@ -93,7 +98,8 @@
 
       &.active {
         .el-tag {
-          background-color: #00b4aa;
+          // 选中 tag 时的颜色
+          background-color: #2a5eff;
           color: #fff;
 
           .el-icon-close {
@@ -114,5 +120,17 @@
         }
       }
     }
+  }
+
+  //滚动条的宽度
+  ::-webkit-scrollbar {
+    width: 2px;
+    height: 2px;
+  }
+
+  //滚动条的滑块
+  ::-webkit-scrollbar-thumb {
+    background-color: #409EFF;
+    border-radius: 5px;
   }
 </style>

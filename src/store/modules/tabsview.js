@@ -1,3 +1,6 @@
+/**
+* 这是配合 historyPage.vue使用的！
+*/
 const SET_TABSVIEW = 'SET_TABSVIEW'
 const DEL_TABSVIEW = 'DEL_TABSVIEW'
 

@@ -21,7 +21,7 @@
 
 .home .content {
   background-color: #ffffff; // !!! 要删掉的部分
-  height: calc(100% - 52px);
+  height: calc(100% - 24px);
 }
 
 .el-container, .layout-container {
@@ -94,19 +94,16 @@
   width: 100%;
   height: 14px;
 
-  .el-icon-arrow-right{
-    color: #333!important;
+  .el-icon-arrow-right {
+    color: #333 !important;
   }
 }
 
-.el-autocomplete .el-icon-search{
-  margin-left: 6px!important;
+.el-autocomplete .el-icon-search {
+  margin-left: 6px !important;
 }
 
 /*
 * 以下是 historyPage页面的样式
 */
-.history-page {
-  //border: 1px solid red;
-  //margin: -3px 0 10px 0;
-}
+.history-page {}
