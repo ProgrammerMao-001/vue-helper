@@ -20,13 +20,12 @@
         <!-- ▲ 顶部栏 -->
 
         <el-main>
-          <!-- ▼ 历史记录选项卡 -->
-          <history-page></history-page>
-          <!-- ▼ 历史记录选项卡 -->
-
           <!-- ▼ 页面主体 -->
           <keep-alive>
             <div class="content">
+              <!-- ▼ 历史记录选项卡 -->
+              <history-page></history-page>
+              <!-- ▼ 历史记录选项卡 -->
               <router-view></router-view>
             </div>
           </keep-alive>
