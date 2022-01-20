@@ -20,8 +20,8 @@
 }
 
 .home .content {
-  background-color: #fff;
-  height: calc(100% - 24px);
+  background-color: #ffffff; // !!! 要删掉的部分
+  height: calc(100% - 52px);
 }
 
 .el-container, .layout-container {
@@ -101,4 +101,12 @@
 
 .el-autocomplete .el-icon-search{
   margin-left: 6px!important;
+}
+
+/*
+* 以下是 historyPage页面的样式
+*/
+.history-page {
+  margin: -3px 0 10px 0;
+  background-color: #fff;
 }

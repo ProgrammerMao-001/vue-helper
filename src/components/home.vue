@@ -13,22 +13,27 @@
         <side-bar :rowId="isCollapse2" @on-response="receiveData"></side-bar>
       </el-aside>
       <el-container>
+        <!-- ▼ 顶部栏 -->
         <el-header>
           <top-bar></top-bar>
         </el-header>
+        <!-- ▲ 顶部栏 -->
+
         <el-main>
+          <!-- ▼ 历史记录选项卡 -->
+          <history-page></history-page>
+          <!-- ▼ 历史记录选项卡 -->
+
+          <!-- ▼ 页面主体 -->
           <keep-alive>
             <div class="content">
               <router-view></router-view>
             </div>
           </keep-alive>
-          <!-- 面包屑 start -->
-          <div class="bottom-bread">
-            <!--            <el-breadcrumb separator-class="el-icon-arrow-right">-->
-            <!--              <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>-->
-            <!--              <el-breadcrumb-item>活动详情</el-breadcrumb-item>-->
-            <!--            </el-breadcrumb>-->
+          <!-- ▲ 页面主体 -->
 
+          <!-- ▼ 面包屑 -->
+          <div class="bottom-bread">
             <el-breadcrumb separator-class="el-icon-arrow-right">
               <el-breadcrumb-item :to="{ path: '/' }">
                 <i class="el-icon-s-home" style="margin-right: 5px;"></i>首页
@@ -38,7 +43,7 @@
               </el-breadcrumb-item>
             </el-breadcrumb>
           </div>
-          <!-- 面包屑 end -->
+          <!-- ▲ 面包屑 -->
         </el-main>
       </el-container>
     </el-container>
@@ -51,6 +56,7 @@
 <script>
   import topBar from "./common/topBar";
   import sideBar from "./common/sideBar";
+  import historyPage from "./common/historyPage";
   import router from '@/router/index';
 
   export default {
@@ -58,6 +64,7 @@
     components: {
       topBar,
       sideBar,
+      historyPage,
     },
 
     computed: {
@@ -68,7 +75,7 @@
 
     watch: {
       $route() {
-        this.getBreadcrumb();
+        this.getBreadcrumb(); // todo 监听路由来实时改变面包屑
       }
     },
 
@@ -87,30 +94,20 @@
       },
 
       /**
-       * todo 点击展开/折叠
+       * 点击展开/折叠
        */
       changeIsCollapse() {
         this.isCollapse2 = !this.isCollapse2;
-        // console.log('isCollapse2', this.isCollapse2);
       },
 
       getBreadcrumb() {
-        // this.$route.matched.filter((item,index,self) => {
-        //   if(item.meta.title){
-        //       const title = item.meta.title;
-        //       this.breadcrumbList.push(title);
-        //   }
-        // });
         this.breadcrumbList = this.$route.matched;
-        // console.log(this.breadcrumbList)
-        // console.log(this.$route.matched);
       }
     },
 
     async created() {
       await this.receiveData();
       this.breadcrumbList = this.$route.matched;
-      // console.log(this.breadcrumbList)
     }
 
   }
