@@ -1,7 +1,7 @@
 <!-- // todo 这个是 历史记录栏，可新增和删除 -->
 <template>
   <div>
-asd
+    <span> historyPage </span>
   </div>
 </template>
 
