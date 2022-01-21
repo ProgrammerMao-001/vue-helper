@@ -127,10 +127,4 @@
     width: 2px;
     height: 2px;
   }
-
-  //滚动条的滑块
-  ::-webkit-scrollbar-thumb {
-    background-color: #409EFF;
-    border-radius: 5px;
-  }
 </style>

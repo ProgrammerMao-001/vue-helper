@@ -26,7 +26,9 @@
               <!-- ▼ 历史记录选项卡 -->
               <history-page></history-page>
               <!-- ▼ 历史记录选项卡 -->
-              <router-view></router-view>
+              <div style="height: calc(100% - 42px);overflow: auto;">
+                <router-view></router-view>
+              </div>
             </div>
           </keep-alive>
           <!-- ▲ 页面主体 -->
@@ -37,7 +39,8 @@
               <el-breadcrumb-item :to="{ path: '/' }">
                 <i class="el-icon-s-home" style="margin-right: 5px;"></i>首页
               </el-breadcrumb-item>
-              <el-breadcrumb-item v-show="item.meta.title !== ''" v-for="item in breadcrumbList" :key="item.name" :to="{ path: item.path }">
+              <el-breadcrumb-item v-show="item.meta.title !== ''" v-for="item in breadcrumbList" :key="item.name"
+                                  :to="{ path: item.path }">
                 {{item.meta.title}}
               </el-breadcrumb-item>
             </el-breadcrumb>

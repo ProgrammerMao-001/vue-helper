@@ -1,6 +1,6 @@
 <template>
-    <div>
-      Welcome!
+    <div class="index-content">
+      welcome!
     </div>
 </template>
 
@@ -10,6 +10,6 @@
     }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 
 </style>

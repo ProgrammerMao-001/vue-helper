@@ -42,7 +42,7 @@
 
 .el-aside {
   overflow: hidden;
-  background: #2a5eff;
+  background: #2a5eff!important;
 }
 
 .el-main {
@@ -107,3 +107,16 @@
 * 以下是 historyPage页面的样式
 */
 .history-page {}
+
+
+//滚动条的宽度
+::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+}
+
+//滚动条的滑块
+::-webkit-scrollbar-thumb {
+  background-color: #409EFF;
+  border-radius: 5px;
+}
