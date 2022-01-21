@@ -14,6 +14,7 @@
         {{tag.name}}
       </el-tag>
       <el-tag
+        v-else
         closable
         :disable-transitions="false"
         @close.prevent.stop="handleClose(tag)"
