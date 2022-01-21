@@ -7,6 +7,13 @@
                  :to="tag.path" :key="index"
     >
       <el-tag
+        v-if="tag.name==='study-code'"
+        :disable-transitions="false"
+        @close.prevent.stop="handleClose(tag)"
+        effect="plain">
+        {{tag.name}}
+      </el-tag>
+      <el-tag
         closable
         :disable-transitions="false"
         @close.prevent.stop="handleClose(tag)"
