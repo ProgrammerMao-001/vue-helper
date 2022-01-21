@@ -87,48 +87,6 @@
 </script>
 
 <style lang="scss" scoped>
-  .tabs-view-container {
-    /*height: 40px;*/
-    overflow-x: auto;
-    white-space: nowrap;
-    padding: 5px;
-    border-bottom: 1px solid #dfdfdf;
-
-    .tags-view-item {
-      .el-tag {
-        margin: 0 3px;
-
-        &:first-child {
-          margin-left: 0;
-        }
-      }
-
-
-      &.active {
-        .el-tag {
-          // 选中 tag 时的颜色
-          background-color: #2a5eff;
-          color: #fff;
-
-          .el-icon-close {
-            color: #fff;
-
-          }
-
-          &:before {
-            position: relative;
-            content: '';
-            background: #fff;
-            display: inline-block;
-            width: 6px;
-            height: 6px;
-            border-radius: 50%;
-            margin-right: 2px;
-          }
-        }
-      }
-    }
-  }
 
   //滚动条的宽度
   ::-webkit-scrollbar {
