@@ -5,6 +5,8 @@
 </template>
 
 <script>
+  import {roleTableAll, DataAll, getRoleData} from "../../../api/system";
+
   export default {
     name: "role",
     components: {},
@@ -17,6 +19,16 @@
     },
     methods: {},
     created() {
+      DataAll(
+        10, 88
+      )
+        .then((res) => {
+        console.log(res)
+      });
+
+      getRoleData().then((res)=>{
+        console.log(res)
+      })
     },
     mounted() {
     },
