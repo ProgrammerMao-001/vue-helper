@@ -5,7 +5,7 @@
       :center='center'
       :zoom='zoom'
     >
-<!--      :events="events"-->
+      <!--      :events="events"-->
       <el-amap-marker
         :position="center"
         :label="label"
@@ -20,28 +20,70 @@
     components: {},
     data() {
       return {
-        center: [116.397428, 39.90923],
+        center: [116.397499, 39.908722],
+        // center: [120.078436, 30.346691],
         zoom: 15,
         label: {
-          content: '自定义标题',
+          content: '当前位置',
           offset: [10, 12]
         }
       }
     },
     methods: {
-      // 初始化地图
-      initMap(map) {
-        var map = new AMap.Map("container", {
-          zoomEnable: true, //是否禁止缩放
-          zoom: 12, //缩放比例
-          dragEnable: false,//禁止拖动
-          cursor: 'hand' // 鼠标在地图上的表现形式，小手
+      qwe() {
+        let that = this
+        var map = new AMap.Map('container', {
+          resizeEnable: true
         });
-        // 初始化工具条
-        map.plugin(["AMap.ToolBar"], function () {
-          map.addControl(new AMap.ToolBar());
+        AMap.plugin('AMap.Geolocation', function () {
+          var geolocation = new AMap.Geolocation({
+            enableHighAccuracy: true,//是否使用高精度定位，默认:true
+            timeout: 10000,          //超过10秒后停止定位，默认：5s
+            buttonPosition: 'RB',    //定位按钮的停靠位置
+            buttonOffset: new AMap.Pixel(10, 20),//定位按钮与设置的停靠位置的偏移量，默认：Pixel(10, 20)
+            zoomToAccuracy: true,   //定位成功后是否自动调整地图视野到定位点
+
+          });
+          map.addControl(geolocation);
+          geolocation.getCurrentPosition(function (status, result) {
+            if (status === 'complete') {
+              that.onComplete(result)
+            } else {
+              that.onError(result)
+            }
+          });
         });
-      }
+      },
+
+      //解析定位结果
+      onComplete(data) {
+        // document.getElementById('status').innerHTML='定位成功'
+        var str = [];
+        str.push('定位结果：' + data.position);
+        str.push('定位类别：' + data.location_type);
+        if (data.accuracy) {
+          str.push('精度：' + data.accuracy + ' 米');
+        }//如为IP精确定位结果则没有精度信息
+        str.push('是否经过偏移：' + (data.isConverted ? '是' : '否'));
+        console.log(str)
+        console.log(data.position)
+        this.$set(this.center, 0, data.position.lng)
+        this.$set(this.center, 1, data.position.lat)
+        // alert('定位成功' + str)
+        // document.getElementById('result').innerHTML = str.join('<br>');
+      },
+      //解析定位错误信息
+      onError(data) {
+        console.log('定位失败')
+        console.log(data.message)
+        // alert('定位失败' + data.message)
+        // document.getElementById('status').innerHTML='定位失败'
+        // document.getElementById('result').innerHTML = '失败原因排查信息:'+data.message;
+      },
+
+    },
+    mounted() {
+      this.qwe();
     }
   }
 </script>
