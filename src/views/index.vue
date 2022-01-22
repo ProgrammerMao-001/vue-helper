@@ -1,6 +1,6 @@
 <template>
   <div class="index-content">
-    welcome!
+    aaa!
   </div>
 </template>
 
