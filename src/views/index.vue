@@ -20,8 +20,7 @@
     components: {},
     data() {
       return {
-        center: [116.397499, 39.908722],
-        // center: [120.078436, 30.346691],
+        center: [120.07823, 30.34726], // 100m 内偏差的
         zoom: 15,
         label: {
           content: '当前位置',
@@ -65,8 +64,8 @@
           str.push('精度：' + data.accuracy + ' 米');
         }//如为IP精确定位结果则没有精度信息
         str.push('是否经过偏移：' + (data.isConverted ? '是' : '否'));
-        console.log(str)
-        console.log(data.position)
+        // console.log(str)
+        // console.log(data.position)
         this.$set(this.center, 0, data.position.lng)
         this.$set(this.center, 1, data.position.lat)
         // alert('定位成功' + str)
