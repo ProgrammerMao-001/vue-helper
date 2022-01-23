@@ -1,12 +1,14 @@
-import Router from "vue-router";
-
 export default new Router({
-  routes: [
-
+  routers: [
+    /**
+     * 接口
+     * */
+    // start
     {
       "entity": null,
       "code": 200,
-      "childs": [{
+      "childs": [
+        {
         "entity": {
           "id": 1,
           "parentMenuId": 0,
@@ -19,7 +21,8 @@ export default new Router({
           "type": "NONE",
           "createUserId": 1
         },
-        "childs": [{
+        "childs": [
+          {
           "entity": {
             "id": 3,
             "parentMenuId": 1,
@@ -293,9 +296,58 @@ export default new Router({
           ]
         },
 
+        // {
+        //   "entity": {
+        //     "id": 161,
+        //     "parentMenuId": 0,
+        //     "name": "高德地图",
+        //     "icon": "el-icon-location-outline",
+        //     "alias": "高德地图",
+        //     "state": "ENABLE",
+        //     "sort": 0,
+        //     "path": "/gaoDeMap",
+        //     "type": "LINK",
+        //     "createUserId": 1,
+        //   },
+        //   "childs": null
+        // },
+
+
+        {
+          "entity": {
+            "id": 161,
+            "parentMenuId": 0,
+            "name": "高德地图",
+            "icon": "el-icon-location-outline",
+            "alias": "高德地图",
+            "state": "ENABLE",
+            "sort": 0,
+            "path": "/gaoDeMap",
+            "type": "NONE",
+            "createUserId": 1
+          },
+          "childs": [
+            {
+              "entity": {
+                "id": 162,
+                "parentMenuId": 0,
+                "name": "随机定位",
+                "icon": "el-icon-place",
+                "alias": "随机定位",
+                "state": "ENABLE",
+                "sort": 0,
+                "path": "/gaoDeMap/randomPositioning",
+                "type": "LINK",
+                "createUserId": 1
+              },
+              "childs": null
+            },
+          ]
+        },
+
+
       ]
     }
-
-
+    // end
   ]
 })

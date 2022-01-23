@@ -16,7 +16,7 @@ const baseUrl = 'https://www.fastmock.site/mock/c25e396c1d2ef07e8f1fc0acf0adc1a5
 // 侧边栏菜单列表 (jainshu)
 export function sideBarListJianShu () {
   return request({
-    url: baseUrl + '/side-bar/jianshu',
+    url: baseUrl + '/sidebar',
     method: 'get'
   })
 }

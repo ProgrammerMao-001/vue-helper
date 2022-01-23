@@ -60,7 +60,7 @@
         path: '',
         isCollapse: false,
         totalList: [],
-        pathRoute: '/system/auth'
+        pathRoute: ''
       }
     },
 
@@ -93,6 +93,7 @@
 
     watch: {
       $route(to, from) {
+        this.pathRoute = this.$route.path;
       },
       rowId: function (newValue) {
         this.isCollapse = newValue;

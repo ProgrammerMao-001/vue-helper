@@ -212,5 +212,49 @@ export default new Router({
         },
       ],
     },
+
+    // ********************************** 高德地图 **********************************
+    // {
+    //   path: '/',
+    //   redirect: '/home',
+    //   name: 'Home',
+    //   meta: {
+    //     title: '',
+    //   },
+    //   component: Home,
+    //   children: [
+    //     {
+    //       path: '/gaoDeMap',
+    //       name: 'GaoDeMap',
+    //       meta: {
+    //         title: '高德地图',
+    //       },
+    //       // component: () => import(/* webpackChunkName: "auth" */ '@/views/system/auth/auth.vue'),
+    //       component: () => import(/* webpackChunkName: "gaoDeMap" */ '@/views/gaoDeMap/gaoDeMap.vue'),
+    //     },
+    //   ],
+    // },
+
+
+    {
+      path: '/gaoDeMap',
+      redirect: '/gaoDeMap',
+      name: 'gaoDeMap',
+      meta: {
+        title: '高德地图',
+      },
+      component: Home,
+      children: [
+        {
+          path: '/gaoDeMap/randomPositioning',
+          name: 'RandomPositioning',
+          meta: {
+            title: '随机定位',
+          },
+          component: () => import(/* webpackChunkName: "gaoDeMap" */ '@/views/gaoDeMap/gaoDeMap.vue'),
+        },
+      ],
+    },
+
   ]
 })
