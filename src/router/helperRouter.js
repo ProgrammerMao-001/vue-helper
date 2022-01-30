@@ -9,81 +9,81 @@ export default new Router({
       "code": 200,
       "childs": [
         {
-        "entity": {
-          "id": 1,
-          "parentMenuId": 0,
-          "name": "系统管理",
-          "icon": "el-icon-message\r\n",
-          "alias": "系统管理",
-          "state": "ENABLE",
-          "sort": 0,
-          "path": "/system",
-          "type": "NONE",
-          "createUserId": 1
-        },
-        "childs": [
-          {
           "entity": {
-            "id": 3,
-            "parentMenuId": 1,
-            "name": "权限管理",
-            "icon": "el-icon-user",
-            "alias": "权限管理",
+            "id": 1,
+            "parentMenuId": 0,
+            "name": "系统管理",
+            "icon": "el-icon-message\r\n",
+            "alias": "系统管理",
             "state": "ENABLE",
             "sort": 0,
-            "path": "/system/auth",
-            "type": "LINK",
+            "path": "/system",
+            "type": "NONE",
             "createUserId": 1
           },
-          "childs": null
+          "childs": [
+            {
+              "entity": {
+                "id": 3,
+                "parentMenuId": 1,
+                "name": "权限管理",
+                "icon": "el-icon-user",
+                "alias": "权限管理",
+                "state": "ENABLE",
+                "sort": 0,
+                "path": "/system/auth",
+                "type": "LINK",
+                "createUserId": 1
+              },
+              "childs": null
+            },
+            {
+              "entity": {
+                "id": 4,
+                "parentMenuId": 1,
+                "name": "角色管理",
+                "icon": "el-icon-bell",
+                "alias": "角色管理",
+                "state": "ENABLE",
+                "sort": 1,
+                "path": "/system/role",
+                "type": "LINK",
+                "createUserId": 1
+              },
+              "childs": null
+            },
+            {
+              "entity": {
+                "id": 2,
+                "parentMenuId": 1,
+                "name": "菜单管理",
+                "icon": "el-icon-edit",
+                "alias": "菜单管理",
+                "state": "ENABLE",
+                "sort": 2,
+                "path": "/system/menu",
+                "type": "LINK",
+                "createUserId": 1
+              },
+              "childs": null
+            },
+            {
+              "entity": {
+                "id": 5,
+                "parentMenuId": 1,
+                "name": "分组管理",
+                "icon": "el-icon-mobile-phone\r\n",
+                "alias": "分组管理",
+                "state": "ENABLE",
+                "sort": 3,
+                "path": "/system/group",
+                "type": "LINK",
+                "createUserId": 1
+              },
+              "childs": null
+            }
+          ]
         },
-          {
-            "entity": {
-              "id": 4,
-              "parentMenuId": 1,
-              "name": "角色管理",
-              "icon": "el-icon-bell",
-              "alias": "角色管理",
-              "state": "ENABLE",
-              "sort": 1,
-              "path": "/system/role",
-              "type": "LINK",
-              "createUserId": 1
-            },
-            "childs": null
-          },
-          {
-            "entity": {
-              "id": 2,
-              "parentMenuId": 1,
-              "name": "菜单管理",
-              "icon": "el-icon-edit",
-              "alias": "菜单管理",
-              "state": "ENABLE",
-              "sort": 2,
-              "path": "/system/menu",
-              "type": "LINK",
-              "createUserId": 1
-            },
-            "childs": null
-          },
-          {
-            "entity": {
-              "id": 5,
-              "parentMenuId": 1,
-              "name": "分组管理",
-              "icon": "el-icon-mobile-phone\r\n",
-              "alias": "分组管理",
-              "state": "ENABLE",
-              "sort": 3,
-              "path": "/system/group",
-              "type": "LINK",
-              "createUserId": 1
-            },
-            "childs": null
-          }
-        ]
-      },
         {
           "entity": {
             "id": 6,
@@ -296,23 +296,6 @@ export default new Router({
           ]
         },
 
-        // {
-        //   "entity": {
-        //     "id": 161,
-        //     "parentMenuId": 0,
-        //     "name": "高德地图",
-        //     "icon": "el-icon-location-outline",
-        //     "alias": "高德地图",
-        //     "state": "ENABLE",
-        //     "sort": 0,
-        //     "path": "/gaoDeMap",
-        //     "type": "LINK",
-        //     "createUserId": 1,
-        //   },
-        //   "childs": null
-        // },
-
-
         {
           "entity": {
             "id": 161,
@@ -337,6 +320,21 @@ export default new Router({
                 "state": "ENABLE",
                 "sort": 0,
                 "path": "/gaoDeMap/randomPositioning",
+                "type": "LINK",
+                "createUserId": 1
+              },
+              "childs": null
+            },
+            {
+              "entity": {
+                "id": 163,
+                "parentMenuId": 0,
+                "name": "VueAMap模板",
+                "icon": "el-icon-place",
+                "alias": "VueAMap模板",
+                "state": "ENABLE",
+                "sort": 0,
+                "path": "/gaoDeMap/vueAMapTemplate",
                 "type": "LINK",
                 "createUserId": 1
               },

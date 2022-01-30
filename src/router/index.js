@@ -230,7 +230,7 @@ export default new Router({
     //         title: '高德地图',
     //       },
     //       // component: () => import(/* webpackChunkName: "auth" */ '@/views/system/auth/auth.vue'),
-    //       component: () => import(/* webpackChunkName: "gaoDeMap" */ '@/views/gaoDeMap/gaoDeMap.vue'),
+    //       component: () => import(/* webpackChunkName: "gaoDeMap" */ '@/views/gaoDeMap/randomPositioning.vue'),
     //     },
     //   ],
     // },
@@ -251,7 +251,15 @@ export default new Router({
           meta: {
             title: '随机定位',
           },
-          component: () => import(/* webpackChunkName: "gaoDeMap" */ '@/views/gaoDeMap/gaoDeMap.vue'),
+          component: () => import(/* webpackChunkName: "gaoDeMap" */ '@/views/gaoDeMap/randomPositioning.vue'),
+        },
+        {
+          path: '/gaoDeMap/vueAMapTemplate',
+          name: 'VueAMapTemplate',
+          meta: {
+            title: 'VueAMap模板',
+          },
+          component: () => import(/* webpackChunkName: "gaoDeMap" */ '@/views/gaoDeMap/vueAMapTemplate.vue'),
         },
       ],
     },
