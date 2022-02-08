@@ -23,10 +23,10 @@
         10, 88
       )
         .then((res) => {
-        console.log(res)
-      });
+          console.log(res)
+        });
 
-      getRoleData().then((res)=>{
+      getRoleData().then((res) => {
         console.log(res)
       })
     },
