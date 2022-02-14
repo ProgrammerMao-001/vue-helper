@@ -1,6 +1,8 @@
 <template>
   <div>
     <span> 分组管理 </span>
+    <el-button class="filter_button" size="medium" @click="download">模板下载</el-button>
+
   </div>
 </template>
 
@@ -15,7 +17,12 @@
     data() {
       return {}
     },
-    methods: {},
+    methods: {
+      // 模板下载
+      download() {
+        // window.location.href = `${location.origin}/file/事故数据导入模板.xls`;
+      }
+    },
     created() {
     },
     mounted() {
