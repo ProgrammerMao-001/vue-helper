@@ -128,7 +128,7 @@
   overflow: hidden;
   white-space: nowrap;
   padding: 5px;
-  border-bottom: 1px solid #dfdfdf;
+  //border-bottom: 1px solid #dfdfdf;
 
   .tags-view-item {
     .el-tag {
@@ -173,4 +173,25 @@
 
 .public-border {
   border: 1px solid red;
+}
+
+.public-bgc {
+  position: relative;
+  height: calc(100% - 10px);
+  overflow: auto;
+  box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  width: 100%;
+  //height: 100%;
+  background-color: #fff;
+  margin-top: 10px;
+
+  .center-contain {
+    position: absolute;
+    left:50%;
+    top:50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height: 99%;
+  }
 }

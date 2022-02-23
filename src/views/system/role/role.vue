@@ -1,47 +1,56 @@
 <template>
-  <div style="width: 100%;height: 100%;background-color: #fff">
-    <el-row>
-      <el-col :span="6">
-        <el-input
-          style="width: 60%"
-          size="small"
-          v-model="filterText"
-          placeholder="输入部门名称搜索"></el-input>
-        <p></p>
-        <el-tree
-          class="filter-tree"
-          :data="data"
-          :props="defaultProps"
-          default-expand-all
-          :filter-node-method="filterNode"
-          ref="tree">
-        </el-tree>
-      </el-col>
+  <div class="public-bgc">
+    <div class="center-contain">
+      <div class="left-content">
+        <div>
+          <el-input
+            size="small"
+            placeholder="输入部门名称搜索"
+            v-model="filterText">
+          </el-input>
 
-      <el-col :span="18" style="border: 1px solid blue">
-        <div class="search-container">
-          <el-row>
-            <el-col class="public-border" :span="7">
-              <el-input size="small" v-model="name" placeholder="输入名称或邮箱搜索"></el-input>
-            </el-col>
-            <el-col class="public-border" :span="7">
-              <date-range-picker v-model="createTime" class="date-item" />
-            </el-col>
-            <el-col class="public-border" :span="4">10</el-col>
-            <el-col class="public-border" :span="3">10</el-col>
-            <el-col class="public-border" :span="3">10</el-col>
-          </el-row>
+          <el-tree
+            style="margin-top: 15px;"
+            class="filter-tree"
+            :data="deptTreeData"
+            :props="defaultProps"
+            default-expand-all
+            :filter-node-method="filterNode"
+            ref="deptTree">
+          </el-tree>
         </div>
-        <div class="button-group"></div>
-        <div class="table-content"></div>
-      </el-col>
-    </el-row>
+      </div>
+
+      <div class="right-content public-border">
+        <div>
+          <el-input
+            size="small"
+            placeholder="输入名称或邮箱搜索"
+            v-model="searchInput"
+            clearable>
+          </el-input>
+
+          <date-range-picker></date-range-picker>
+
+          <el-select v-model="value" placeholder="请选择">
+            <el-option
+              v-for="item in options"
+              :key="item.value"
+              :label="item.label"
+              :value="item.value">
+            </el-option>
+          </el-select>
+
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
-  import {roleTableAll, DataAll, getRoleData} from '../../../api/system'
-  import dateRangePicker from '../../../components/DateRangePicker/dateRangePicker'
+  import {roleTableAll, DataAll, getRoleData} from '@/api/system'
+  import dateRangePicker from '@/components/DateRangePicker/dateRangePicker'
+
   export default {
     name: 'role',
     components: {
@@ -51,14 +60,15 @@
     computed: {},
     filters: {},
     watch: {
-      filterText (val) {
-        this.$refs.tree.filter(val)
+      filterText(val) {
+        this.$refs.deptTree.filter(val);
       }
     },
-    data () {
+    data() {
       return {
-        filterText: '', // 部门名称
-        data: [
+        searchInput: '',
+        filterText: '',
+        deptTreeData: [
           {
             id: 1,
             label: '一级 1',
@@ -98,44 +108,59 @@
           children: 'children',
           label: 'label'
         },
-        name: '', // 名称或邮箱
-        createTime: '',
+        options: [{
+          value: '选项1',
+          label: '黄金糕'
+        }, {
+          value: '选项2',
+          label: '双皮奶'
+        }, {
+          value: '选项3',
+          label: '蚵仔煎'
+        }, {
+          value: '选项4',
+          label: '龙须面'
+        }, {
+          value: '选项5',
+          label: '北京烤鸭'
+        }],
+        value: '',
       }
     },
     methods: {
-      filterNode (value, data) {
-        if (!value) return true
-        return data.label.indexOf(value) !== -1
-      },
-      dataAll () {
-        DataAll(
-          10, 88
-        )
-          .then((res) => {
-            console.log(res)
-          })
-      },
-      getRole () {
-        getRoleData().then((res) => {
-          console.log(res)
-        })
-      },
+      filterNode(value, data) {
+        if (!value) return true;
+        return data.label.indexOf(value) !== -1;
+      }
     },
-    created () {
-      // this.dataAll()
-      // this.getRole()
+    created() {
     },
-    mounted () {
+    mounted() {
     },
   }
 </script>
 
 <style lang="scss" scoped>
-  /*.date-item {*/
-  /*  display: inline-block;*/
-  /*  vertical-align: middle;*/
-  /*  margin-bottom: 10px;*/
-  /*  height: 30.5px !important;*/
-  /*  width: 230px !important;*/
-  /*}*/
+  .public-bgc {
+    .left-content {
+      float: left;
+      width: 20%;
+      height: 100%;
+
+      div {
+        width: 90%;
+        margin: 0 auto;
+      }
+    }
+
+    .right-content {
+      float: right;
+      width: calc(80% - 10px);
+      height: 100%;
+
+      & :first-child {
+
+      }
+    }
+  }
 </style>

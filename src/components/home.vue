@@ -26,7 +26,7 @@
               <!-- ▼ 历史记录选项卡 -->
               <history-page></history-page>
               <!-- ▼ 历史记录选项卡 -->
-              <div style="height: calc(100% - 42px);overflow: auto;">
+              <div style="height: calc(100% - 42px);">
                 <router-view></router-view>
               </div>
             </div>

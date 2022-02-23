@@ -33,7 +33,14 @@ export default new Router({
       },
       component: () => import(/* webpackChunkName: "demo" */ '@/views/demo/demo.vue'),
     },
-
+    {
+      path: '/help',
+      name: 'Help',
+      meta: {
+        title: 'help'
+      },
+      component: () => import(/* webpackChunkName: "demo" */ '@/views/demo/help.vue'),
+    },
     // ********************************** 系统管理 **********************************
     {
       path: '/system',
