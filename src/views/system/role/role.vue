@@ -22,7 +22,7 @@
       </div>
 
       <div class="right-content public-border">
-        <el-form :model="searchForm" ref="searchForm" :inline="true">
+        <el-form v-show="showSearchFormFlag" :model="searchForm" ref="searchForm" :inline="true">
           <el-form-item style="width: 180px;" size="small" label="">
             <el-input v-model="searchForm.blurry" placeholder="请输入名称或者邮箱搜索"></el-input>
           </el-form-item>
@@ -34,12 +34,23 @@
             </el-select>
           </el-form-item>
           <el-form-item size="small">
-            <el-button type="success" icon="el-icon-search" @click="submit"> 搜索</el-button>
-            <el-button type="warning" icon="el-icon-refresh-left" @click="reset"> 重置</el-button>
+            <el-button type="success" icon="el-icon-search" @click="submit"> 搜索 </el-button>
+            <el-button type="warning" icon="el-icon-refresh-left" @click="reset"> 重置 </el-button>
           </el-form-item>
         </el-form>
         <div class="button-group">
+          <div style="float:left;">
+            <el-button size="small" type="primary" icon="el-icon-plus" @click="submit"> 新增 </el-button>
+            <el-button size="small" type="success" icon="el-icon-edit" @click="submit"> 修改 </el-button>
+            <el-button size="small" type="danger" icon="el-icon-delete" @click="submit"> 删除 </el-button>
+            <el-button size="small" type="warning" icon="el-icon-download" @click="submit"> 导出 </el-button>
+          </div>
 
+          <el-button-group style="float: right">
+            <el-button @click="showSearchFormFlag=!showSearchFormFlag" size="small" type="info" plain icon="el-icon-search"></el-button>
+            <el-button size="small" icon="el-icon-refresh"></el-button>
+            <el-button size="small" icon="el-icon-menu"></el-button>
+          </el-button-group>
         </div>
       </div>
     </div>
@@ -47,8 +58,8 @@
 </template>
 
 <script>
-  import {roleTableAll, DataAll, getRoleData} from '@/api/system'
-  import dateRangePicker from '@/components/DateRangePicker/dateRangePicker'
+  import {roleTableAll, DataAll, getRoleData} from '@/api/system';
+  import dateRangePicker from '@/components/DateRangePicker/dateRangePicker';
 
   export default {
     name: 'role',
@@ -65,6 +76,7 @@
     },
     data() {
       return {
+        showSearchFormFlag: true,
         filterText: '',
         deptTreeData: [
           {
