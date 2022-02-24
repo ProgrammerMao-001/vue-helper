@@ -83,7 +83,12 @@ module.exports = new Promise((resolve, reject) => {
       // Add FriendlyErrorsPlugin
       devWebpackConfig.plugins.push(new FriendlyErrorsPlugin({
         compilationSuccessInfo: {
-          messages: [`Your application is running here: http://${devWebpackConfig.devServer.host}:${port}`],
+          // messages: [`Your application is running here: http://${devWebpackConfig.devServer.host}:${port}`],
+          messages: [
+            `App runing at: `,
+            `Local: http://localhost:${port}`,
+            `Network: http://${require('ip').address()}:${port}`,
+          ], // todo 解决运行时 打开是localhost的问题
         },
         onErrors: config.dev.notifyOnErrors
         ? utils.createNotifierCallback()

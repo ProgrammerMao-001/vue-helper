@@ -15,7 +15,8 @@ module.exports = {
     // Various Dev Server settings
     // host: 'localhost', // can be overwritten by process.env.HOST
     // host: '192.168.2.106', // can be overwritten by process.env.HOST workPc
-    host: '192.168.2.102', // can be overwritten by process.env.HOST selfPc
+    // host: '192.168.2.102', // can be overwritten by process.env.HOST selfPc
+    host: '0.0.0.0', // todo 解决运行时 打开是localhost的问题
     port: 5200, // can be overwritten by process.env.PORT, if port is in use, a free one will be determined
     autoOpenBrowser: false,
     errorOverlay: true,
