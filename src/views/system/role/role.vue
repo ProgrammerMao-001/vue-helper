@@ -22,24 +22,23 @@
       </div>
 
       <div class="right-content public-border">
-        <div>
-          <el-input
-            size="small"
-            placeholder="输入名称或邮箱搜索"
-            v-model="searchInput"
-            clearable>
-          </el-input>
-
-          <date-range-picker></date-range-picker>
-
-          <el-select v-model="value" placeholder="请选择">
-            <el-option
-              v-for="item in options"
-              :key="item.value"
-              :label="item.label"
-              :value="item.value">
-            </el-option>
-          </el-select>
+        <el-form :model="searchForm" ref="searchForm" :inline="true">
+          <el-form-item style="width: 180px;" size="small" label="">
+            <el-input v-model="searchForm.blurry" placeholder="请输入名称或者邮箱搜索"></el-input>
+          </el-form-item>
+          <dateRangePicker style="width: 280px;" v-model="searchForm.createTime"/>
+          <el-form-item style="width: 100px;margin-left: 10px;" size="small" label="">
+            <el-select v-model="searchForm.enable" placeholder="状态">
+              <el-option label="激活" value="true"></el-option>
+              <el-option label="锁定" value="false"></el-option>
+            </el-select>
+          </el-form-item>
+          <el-form-item size="small">
+            <el-button type="success" icon="el-icon-search" @click="submit"> 搜索</el-button>
+            <el-button type="warning" icon="el-icon-refresh-left" @click="reset"> 重置</el-button>
+          </el-form-item>
+        </el-form>
+        <div class="button-group">
 
         </div>
       </div>
@@ -66,7 +65,6 @@
     },
     data() {
       return {
-        searchInput: '',
         filterText: '',
         deptTreeData: [
           {
@@ -108,29 +106,23 @@
           children: 'children',
           label: 'label'
         },
-        options: [{
-          value: '选项1',
-          label: '黄金糕'
-        }, {
-          value: '选项2',
-          label: '双皮奶'
-        }, {
-          value: '选项3',
-          label: '蚵仔煎'
-        }, {
-          value: '选项4',
-          label: '龙须面'
-        }, {
-          value: '选项5',
-          label: '北京烤鸭'
-        }],
-        value: '',
+        searchForm: {
+          blurry: '',
+          enable: '',
+          createTime: '',
+        }
       }
     },
     methods: {
       filterNode(value, data) {
         if (!value) return true;
         return data.label.indexOf(value) !== -1;
+      },
+      submit() {
+        console.log(this.searchForm);
+      },
+      reset() {
+        this.searchForm = {};
       }
     },
     created() {
@@ -158,8 +150,8 @@
       width: calc(80% - 10px);
       height: 100%;
 
-      & :first-child {
-
+      .button-group {
+        width: 100%;
       }
     }
   }
