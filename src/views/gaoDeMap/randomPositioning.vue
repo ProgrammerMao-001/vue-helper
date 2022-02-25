@@ -6,7 +6,7 @@
 
 <script>
   export default {
-    name: "c",
+    name: "randomPositioning",
     data() {
       return {
 
