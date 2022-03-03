@@ -173,13 +173,13 @@ export default new Router({
       ],
     },
 
-    // ********************************** 预警管理 **********************************
+    // ********************************** 案例 **********************************
     {
       path: '/earlyWarning/monitor',
       // redirect: '/user/content',
       name: 'EarlyWarning',
       meta: {
-        title: '预警管理',
+        title: '案例',
       },
       component: Home,
       children: [
@@ -187,7 +187,7 @@ export default new Router({
           path: '/earlyWarning/monitor',
           name: 'Monitor',
           meta: {
-            title: '监控管理',
+            title: '导入导出',
           },
           component: () => import(/* webpackChunkName: "index" */ '@/views/earlyWarning/monitor/monitor.vue'),
         },

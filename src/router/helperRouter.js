@@ -221,9 +221,9 @@ export default new Router({
           "entity": {
             "id": 16,
             "parentMenuId": 0,
-            "name": "预警管理",
+            "name": "案例",
             "icon": "el-icon-message-solid",
-            "alias": "预警管理",
+            "alias": "案例",
             "state": "ENABLE",
             "sort": 1,
             "path": "/earlyWarning/monitor",
@@ -234,9 +234,9 @@ export default new Router({
             "entity": {
               "id": 17,
               "parentMenuId": 16,
-              "name": "监控管理",
+              "name": "导入导出",
               "icon": "el-icon-video-camera-solid",
-              "alias": "监控管理",
+              "alias": "导入导出",
               "state": "ENABLE",
               "sort": 10,
               "path": "/earlyWarning/monitor",
