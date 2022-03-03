@@ -221,28 +221,6 @@ export default new Router({
     },
 
     // ********************************** 高德地图 **********************************
-    // {
-    //   path: '/',
-    //   redirect: '/home',
-    //   name: 'Home',
-    //   meta: {
-    //     title: '',
-    //   },
-    //   component: Home,
-    //   children: [
-    //     {
-    //       path: '/gaoDeMap',
-    //       name: 'GaoDeMap',
-    //       meta: {
-    //         title: '高德地图',
-    //       },
-    //       // component: () => import(/* webpackChunkName: "auth" */ '@/views/system/auth/auth.vue'),
-    //       component: () => import(/* webpackChunkName: "gaoDeMap" */ '@/views/gaoDeMap/randomPositioning.vue'),
-    //     },
-    //   ],
-    // },
-
-
     {
       path: '/gaoDeMap',
       redirect: '/gaoDeMap',
@@ -271,5 +249,41 @@ export default new Router({
       ],
     },
 
+    // ********************************** 学习模块 **********************************
+    {
+      path: '/compCommunication',
+      redirect: '/compCommunication',
+      name: 'compCommunication',
+      meta: {
+        title: '学习模块',
+      },
+      component: Home,
+      children: [
+        {
+          path: '/forStudy/compCommunication/parent',
+          name: 'Parent',
+          meta: {
+            title: '组件通信',
+          },
+          component: () => import(/* webpackChunkName: "parent" */ '@/views/forStudy/compCommunication/parent.vue'),
+        },
+        {
+          path: '/forStudy/vueStudy',
+          name: 'VueStudy',
+          meta: {
+            title: 'VueStudy',
+          },
+          component: () => import(/* webpackChunkName: "vueStudy" */ '@/views/forStudy/vueStudy.vue'),
+        },
+        {
+          path: '/forStudy/vuexStudy',
+          name: 'VuexStudy',
+          meta: {
+            title: 'Vuex',
+          },
+          component: () => import(/* webpackChunkName: "vuexStudy" */ '@/views/forStudy/vuexStudy.vue'),
+        },
+      ],
+    },
   ]
 })

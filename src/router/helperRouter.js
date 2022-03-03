@@ -1,89 +1,87 @@
 export default new Router({
   routers: [
     /**
-     * 接口
+     * https://www.fastmock.site/#/project/c25e396c1d2ef07e8f1fc0acf0adc1a5 sidebar接口
      * */
     // start
     {
       "entity": null,
       "code": 200,
-      "childs": [
-        {
+      "childs": [{
+        "entity": {
+          "id": 1,
+          "parentMenuId": 0,
+          "name": "系统管理",
+          "icon": "el-icon-message\r\n",
+          "alias": "系统管理",
+          "state": "ENABLE",
+          "sort": 0,
+          "path": "/system",
+          "type": "NONE",
+          "createUserId": 1
+        },
+        "childs": [{
           "entity": {
-            "id": 1,
-            "parentMenuId": 0,
-            "name": "系统管理",
-            "icon": "el-icon-message\r\n",
-            "alias": "系统管理",
+            "id": 3,
+            "parentMenuId": 1,
+            "name": "权限管理",
+            "icon": "el-icon-user",
+            "alias": "权限管理",
             "state": "ENABLE",
             "sort": 0,
-            "path": "/system",
-            "type": "NONE",
+            "path": "/system/auth",
+            "type": "LINK",
             "createUserId": 1
           },
-          "childs": [
-            {
-              "entity": {
-                "id": 3,
-                "parentMenuId": 1,
-                "name": "权限管理",
-                "icon": "el-icon-user",
-                "alias": "权限管理",
-                "state": "ENABLE",
-                "sort": 0,
-                "path": "/system/auth",
-                "type": "LINK",
-                "createUserId": 1
-              },
-              "childs": null
-            },
-            {
-              "entity": {
-                "id": 4,
-                "parentMenuId": 1,
-                "name": "角色管理",
-                "icon": "el-icon-bell",
-                "alias": "角色管理",
-                "state": "ENABLE",
-                "sort": 1,
-                "path": "/system/role",
-                "type": "LINK",
-                "createUserId": 1
-              },
-              "childs": null
-            },
-            {
-              "entity": {
-                "id": 2,
-                "parentMenuId": 1,
-                "name": "菜单管理",
-                "icon": "el-icon-edit",
-                "alias": "菜单管理",
-                "state": "ENABLE",
-                "sort": 2,
-                "path": "/system/menu",
-                "type": "LINK",
-                "createUserId": 1
-              },
-              "childs": null
-            },
-            {
-              "entity": {
-                "id": 5,
-                "parentMenuId": 1,
-                "name": "分组管理",
-                "icon": "el-icon-mobile-phone\r\n",
-                "alias": "分组管理",
-                "state": "ENABLE",
-                "sort": 3,
-                "path": "/system/group",
-                "type": "LINK",
-                "createUserId": 1
-              },
-              "childs": null
-            }
-          ]
+          "childs": null
         },
+          {
+            "entity": {
+              "id": 4,
+              "parentMenuId": 1,
+              "name": "角色管理",
+              "icon": "el-icon-bell",
+              "alias": "角色管理",
+              "state": "ENABLE",
+              "sort": 1,
+              "path": "/system/role",
+              "type": "LINK",
+              "createUserId": 1
+            },
+            "childs": null
+          },
+          {
+            "entity": {
+              "id": 2,
+              "parentMenuId": 1,
+              "name": "菜单管理",
+              "icon": "el-icon-edit",
+              "alias": "菜单管理",
+              "state": "ENABLE",
+              "sort": 2,
+              "path": "/system/menu",
+              "type": "LINK",
+              "createUserId": 1
+            },
+            "childs": null
+          },
+          {
+            "entity": {
+              "id": 5,
+              "parentMenuId": 1,
+              "name": "分组管理",
+              "icon": "el-icon-mobile-phone\r\n",
+              "alias": "分组管理",
+              "state": "ENABLE",
+              "sort": 3,
+              "path": "/system/group",
+              "type": "LINK",
+              "createUserId": 1
+            },
+            "childs": null
+          }
+        ]
+      },
         {
           "entity": {
             "id": 6,
@@ -219,7 +217,6 @@ export default new Router({
             }
           ]
         },
-
         {
           "entity": {
             "id": 16,
@@ -295,7 +292,6 @@ export default new Router({
             }
           ]
         },
-
         {
           "entity": {
             "id": 161,
@@ -309,22 +305,21 @@ export default new Router({
             "type": "NONE",
             "createUserId": 1
           },
-          "childs": [
-            {
-              "entity": {
-                "id": 162,
-                "parentMenuId": 0,
-                "name": "随机定位",
-                "icon": "el-icon-place",
-                "alias": "随机定位",
-                "state": "ENABLE",
-                "sort": 0,
-                "path": "/gaoDeMap/randomPositioning",
-                "type": "LINK",
-                "createUserId": 1
-              },
-              "childs": null
+          "childs": [{
+            "entity": {
+              "id": 162,
+              "parentMenuId": 0,
+              "name": "随机定位",
+              "icon": "el-icon-place",
+              "alias": "随机定位",
+              "state": "ENABLE",
+              "sort": 0,
+              "path": "/gaoDeMap/randomPositioning",
+              "type": "LINK",
+              "createUserId": 1
             },
+            "childs": null
+          },
             {
               "entity": {
                 "id": 163,
@@ -342,8 +337,66 @@ export default new Router({
             },
           ]
         },
-
-
+        {
+          "entity": {
+            "id": 164,
+            "parentMenuId": 0,
+            "name": "学习模块",
+            "icon": "el-icon-collection",
+            "alias": "学习模块",
+            "state": "ENABLE",
+            "sort": 0,
+            "path": "/compCommunication",
+            "type": "NONE",
+            "createUserId": 1
+          },
+          "childs": [{
+            "entity": {
+              "id": 165,
+              "parentMenuId": 0,
+              "name": "组件通信",
+              "icon": "el-icon-receiving",
+              "alias": "组件通信",
+              "state": "ENABLE",
+              "sort": 0,
+              "path": "/forStudy/compCommunication/parent",
+              "type": "LINK",
+              "createUserId": 1
+            },
+            "childs": null
+          },
+            {
+              "entity": {
+                "id": 166,
+                "parentMenuId": 0,
+                "name": "VueStudy",
+                "icon": "el-icon-medal",
+                "alias": "VueStudy",
+                "state": "ENABLE",
+                "sort": 0,
+                "path": "/forStudy/vueStudy",
+                "type": "LINK",
+                "createUserId": 1
+              },
+              "childs": null
+            },
+            {
+              "entity": {
+                "id": 166,
+                "parentMenuId": 0,
+                "name": "VuexStudy",
+                "icon": "el-icon-trophy",
+                "alias": "VuexStudy",
+                "state": "ENABLE",
+                "sort": 0,
+                "path": "/forStudy/vuexStudy",
+                "type": "LINK",
+                "createUserId": 1
+              },
+              "childs": null
+            },
+          ]
+        },
       ]
     }
     // end
