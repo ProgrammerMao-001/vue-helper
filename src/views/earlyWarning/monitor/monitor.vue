@@ -32,8 +32,11 @@
             <el-button size="small" @click="onReset"> 重置</el-button>
           </el-form-item>
         </el-form>
-        <el-button type="warning" icon="el-icon-plus" size="small" @click="onAdd"> 新增</el-button>
-        <el-button type="danger" icon="el-icon-document-add" size="small" @click="onImport"> 导入</el-button>
+        <div class="button-group">
+          <el-button type="warning" icon="el-icon-plus" size="small" @click="handleJumpToSameDialog('add', null)"> 新增
+          </el-button>
+          <el-button type="danger" icon="el-icon-document-add" size="small" @click="onImport"> 导入</el-button>
+        </div>
         <el-table
           border
           ref="multipleTable"
@@ -44,6 +47,25 @@
             align="center"
             label="工矿领域企业安全隐患分类"
           >
+            <el-table-column
+              header-align="center"
+              align="center"
+              type="index"
+              :index="indexMethod"
+              width="50px"
+              label="序号"
+            >
+            </el-table-column>
+            <el-table-column
+              header-align="center"
+              align="center"
+              prop=""
+              label="columnLabel"
+            >
+              <template slot-scope="scope">
+                {{ (searchForm.pageNo - 1) * searchForm.pageSize + scope.$index + 1 }}
+              </template>
+            </el-table-column>
             <el-table-column
               align="center"
               prop="hiddenDangerType"
@@ -112,55 +134,62 @@
               label="法律依据">
             </el-table-column>
             <el-table-column
+              width="148px"
               align="center"
-              fixed="right"
               label="操作">
               <template slot-scope="scope">
-                <el-button type="text" size="small" @click="handleClickDetails(scope.row)"
-                           style="margin-right: 10px">详情
+                <el-button type="text" size="small" @click="handleJumpToSameDialog('detail', scope.row)"
+                           style="margin-right: 5px">详情
                 </el-button>
-                <el-button type="text" size="small" @click="handleClickAdd('edit', scope.row)"
-                           style="margin-right: 10px">编辑
+                <el-button type="text" size="small" @click="handleJumpToSameDialog('edit', scope.row)"
+                           style="margin-right: 5px">编辑
                 </el-button>
                 <el-button type="text" size="small"
-                           @click="handleTableDeleteBtnClick(scope.row)">删除
+                           @click="handleTableDeleteBtnClick(scope.row.id)">删除
                 </el-button>
               </template>
             </el-table-column>
           </el-table-column>
         </el-table>
         <!-- 分页 -->
-        <div>
+        <div class="pagination-class">
           <el-pagination
             background
             @size-change="handleSizeChange"
             @current-change="handleCurrentChange"
-            :current-page="1"
+            :current-page="searchForm.pageNo"
             :page-sizes="[10, 20, 30, 40, 50, 100]"
-            :page-size="10"
+            :page-size="searchForm.pageSize"
             layout="total, sizes, prev, pager, next, jumper"
-            :total="searchForm.total">
+            :total="total">
           </el-pagination>
         </div>
       </div>
     </div>
+    <same-dialog ref="sameDialog" :rowId="rowId" @getData="getPcList"/>
+    <!-- 1.todo ref：为了在父组件中注册弹窗 -->
+    <!-- 2.todo rowId：为了传一行的值给弹窗  -->
+    <!-- 3.todo @getData: 自定义getData事件，将父组件的getPcList()传给子组件，子组件用this.$emit接收 -->
   </div>
 </template>
 
 <script>
-  import { getTypeChecklist } from "../../../api/earlyWarning-monitor";
+  import {getPcList, getTypeChecklist, pcDelete} from "../../../api/earlyWarning-monitor";
+  import sameDialog from "./unit/sameDialog";
+
   export default {
     name: "monitor",
-    components: {},
+    components: {sameDialog},
     props: {},
     computed: {},
     filters: {},
     watch: {},
     data() {
       return {
+        rowId: {}, // 父组件传给弹窗的数据
+        total: 0,
         tableData: [],
         searchForm: {
-          total: 0,
           pageNo: 1,
           pageSize: 10,
           hiddenDangerType: '', // 隐患类型
@@ -182,54 +211,109 @@
     },
     methods: {
       onSearchForm() {
-        console.log('查询')
+        this.searchForm.pageNo = 1;
+        this.searchForm.pageSize = 10;
+        this.getPcList();
       },
       onReset() {
-        console.log('重置')
-      },
-      onAdd() {
-        console.log('新增')
+        this.searchForm = {
+          hiddenDangerType: '',
+          hiddenDangerLevel: '',
+        }
+        this.searchForm.pageNo = 1;
+        this.searchForm.pageSize = 10;
+        this.getPcList();
+        console.log(this.searchForm.pageNo, this.searchForm.pageSize)
       },
       onImport() {
         console.log('导入')
       },
-      handleClickDetails() {
-        console.log('详情')
-      },
-      handleClickAdd() {
-        console.log('编辑')
-      },
-      handleTableDeleteBtnClick() {
-        console.log('删除')
+      handleTableDeleteBtnClick(data) {
+        this.$confirm('此操作将永久删除该行数据，是否继续？', '提示', {
+          confirmButtonText: '确定',
+          cancelButtonText: '取消',
+          type: 'warning'
+        }).then(() => {
+          pcDelete(data).then((res) => {
+            console.log(res)
+            if (res.data.code === '200') {
+              this.$message.success('删除成功！');
+              this.getPcList();
+            } else {
+              this.$message.error('删除失败！');
+            }
+          })
+        }).catch(() => {
+          this.$message({
+            type: 'info',
+            message: '已取消删除'
+          });
+        })
       },
       handleSizeChange(pageSize) {
-        this.searchForm.pageNo = 1;
         this.searchForm.pageSize = pageSize;
-        this.getData();
+        // this.searchForm.pageNo = 2;
+        this.getPcList();
       },
       handleCurrentChange(pageNo) {
         this.searchForm.pageNo = pageNo;
-        this.getData();
-      },
-      getData() {
-        console.log('getData');
+        this.getPcList();
       },
       getTypeChecklist() {
-        getTypeChecklist().then((res) => {
+        getTypeChecklist(
+
+        ).then((res) => {
           this.hiddenDangerTypeList = res.data.data;
         })
       },
+      getPcList() {
+        getPcList(
+          {
+            pageNo: this.searchForm.pageNo,
+            pageSize: this.searchForm.pageSize,
+            hiddenDangerType: this.searchForm.hiddenDangerType ? this.searchForm.hiddenDangerType : null,
+            hiddenDangerLevel: this.searchForm.hiddenDangerLevel ? this.searchForm.hiddenDangerLevel : null,
+            // ...this.searchForm
+          }
+        ).then((res) => {
+          if (res.data.code === '200') {
+            this.tableData = res.data.data;
+            this.total = res.data.page.total
+          } else {
+            this.$message.warning('获取数据失败！');
+          }
+        })
+      },
+      //序号Index 翻页递增  pageNo 当前页, pageSize 当前页显示条数
+      indexMethod(index) {
+        return (this.searchForm.pageNo - 1) * this.searchForm.pageSize + index + 1;
+      },
+      handleJumpToSameDialog(type, data) {
+        // console.log(type, data)
+        this.$set(this.rowId, 'type', type);
+        this.$set(this.rowId, 'data', data);
+        // console.log(this.rowId)
+        const sameDialog = 'sameDialog';
+        const sameDialogComponent = this.$refs[sameDialog];
+        sameDialogComponent.showDialog();
+      },
     },
     created() {
-
     },
     mounted() {
       this.getTypeChecklist()
+      this.getPcList()
     },
-
   }
 </script>
 
 <style lang="scss" scoped>
+  .pagination-class {
+    float: right;
+    padding: 20px 0;
+  }
 
+  .button-group {
+    padding: 0 0 20px 18px;
+  }
 </style>
